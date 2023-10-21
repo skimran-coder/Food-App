@@ -1,0 +1,20 @@
+04. Laying the foundation
+
+16:40
+22:25
+1:11:50
+2:25:06
+
+React component
+1. funtional component - NEW
+* name of component starts with capital letter
+
+
+
+2. class based componet - OLD
+
+# Sanitization in JSX
+
+# Component Composition -- Nested Components
+
+# Polyphil

@@ -1,0 +1,120 @@
+- What is `NPM`?
+
+npm is the world's largest Software Registry. The registry contains over 800,000 code packages. Open-source developers use npm to share software. Many organizations also use npm to manage private development.
+
+- What is `Parcel/Webpack`? Why do we need it?
+
+Parcel and webpack are the bundlers used mostly for JavaScript or Typescript code that helps you to minify, clean, and make your code compact so that it becomes easier to send a request or receive the response from the server when it usually takes you to transfer multiple files without using any bundler for loading the page of your application. Both of these bundlers substantially reduce the time it takes for the transfer of data and files to the server from the application. Along with that both bundlers parcel and webpack remove the unnecessary comments, new lines, any kind of block delimiters, and white spaces while the functionality of the code remains unchanged.
+
+- What is `.parcel-cache`
+
+The .cache folder (or .parcel-cache in parcel v2) stores information about your project when parcel builds it, so that when it rebuilds, it doesn't have to re-parse and re-analyze everything from scratch. It's a key reason why parcel can be so fast in development mode. I think committing it to git would be a bad idea - it would add a large number of (unnecessary) changes to your commit history, and it could easily get out-of-sync with the code that generated it.
+
+- What is `npx` ?
+
+NPX stands for Node Package eXecute. It is simply an NPM package runner. It allows developers to execute any Javascript Package available on the NPM registry without even installing it. NPX is installed automatically with NPM version 5.2.0 and above.
+
+- What is difference between `dependencies` vs `devDependencies`?
+
+Dependencies are the packages that are required for your application to run properly, devDependencies are the packages that are required for development and testing purposes only, and peerDependencies are the packages that your package expects to be installed in the user's environment.
+
+- What is Tree Shaking?
+
+Tree shaking is a term commonly used within a JavaScript context to describe the removal of dead code.
+
+It relies on the import and export statements to detect if code modules are exported and imported for use between JavaScript files.
+
+In modern JavaScript applications, we use module bundlers (e.g., webpack or parcel) to automatically remove dead code when bundling multiple JavaScript files into single files. This is important for preparing code that is production ready, for example with clean structures and minimal file size.
+
+- What is Hot Module Replacement?
+
+Hot Module Replacement (HMR) improves the development experience by automatically updating modules in the browser at runtime without needing a whole page refresh. This means that application state can be retained as you change small things. Parcel's HMR implementation supports both JavaScript and CSS assets.
+
+- List down your favourite 5 superpowers of Parcel and describe any 3 of them in your own words.
+
+1. Dev server
+2. Hot reloading
+3. Caching
+4. HTTPS
+5. File watcher
+
+=> Hot reloading -- As you make changes to your code, Parcel automatically rebuilds the changed files and updates your app in the browser. By default, Parcel fully reloads the page, but in some cases it may perform Hot Module Replacement (HMR). HMR improves the development experience by updating modules in the browser at runtime without needing a whole page refresh. This means that application state can be retained as you change small things in your code.
+
+=> Caching -- Parcel caches everything it builds to disk. If you restart the dev server, Parcel will only rebuild files that have changed since the last time it ran. Parcel automatically tracks all of the files, configuration, plugins, and dev dependencies that are involved in your build, and granularly invalidates the cache when something changes. For example, if you change a configuration file, all of the source files that rely on that configuration will be rebuilt.
+
+=> HTTPS -- Sometimes, you may need to use HTTPS during development. For example, you may need to use a certain hostname for authentication cookies, or debug mixed content issues. Parcel’s dev server supports HTTPS out of the box. You can either use an automatically generated certificate, or provide your own.
+
+- What is `.gitignore`? What should we add and not add into it
+
+The purpose of gitignore files is to ensure that certain files not tracked by Git remain untracked.
+
+To stop tracking a file that is currently tracked, use git rm --cached to remove the file from the index. The filename can then be added to the .gitignore file to stop the file from being reintroduced in later commits.
+
+- What is the difference between `package.json` and `package-lock.json`
+
+package.json						package.lock.json 
+
+It contains basic information about the project.	It describes the exact tree that was generated to allow subsequent installs to have the identical tree.
+It is mandatory for every project.			It is automatically generated for those operations where npm modifies either node_modules tree or package.json.
+It records important metadata about the project.	It allows future devs to install the same dependencies in the project.
+It contains information such as name, description, author, script, and dependencies.	It contains the name, dependencies, and locked version of the project. 
+
+- Why should I not modify `package-lock.json`?
+
+In my mind, lock files should not be modified unless you are actively updating the packages required. It seems that sometimes, however, npm decides to update the package-lock. json file when you run an npm install . It does this to seemingly keep dependencies up-to-date without having to run npm update separately.
+
+- What is `node_modules` ? Is it a good idea to push that on git?
+
+node_modules is a directory created by npm (Node Package Manager) to store all the dependencies (third-party packages) that your project relies on. These dependencies are specified in your package.json file, and node_modules contains the actual code of these packages.
+
+Regarding whether you should push the node_modules directory to your Git repository, the general consensus is that you should not include it. Here's why:
+
+1. Size : The node_modules directory can be quite large, especially in projects with many dependencies. Pushing it to your Git repository can significantly increase the size of your repository, making it slower to clone, push, and pull.
+2. Version conrol : npm and other package managers are designed to manage dependencies. Your package.json and package-lock.json (or yarn.lock) files already define your project's dependencies and their versions. It's redundant to store the actual dependency code in version control when the dependency metadata is already there.
+
+ - What is the `dist` folder?
+
+In a React project, the "dist" folder (short for "distribution") is typically used to store the output of a build process, which includes the optimized and production-ready code for your application. The contents of the "dist" folder are the files that you can deploy to a web server or a hosting service to make your React application available to users.
+
+ - What is `browserlists`?
+
+In a React project, the "browserslist" configuration is not specific to React itself but rather a part of the broader JavaScript and front-end development ecosystem. "Browserslist" is a configuration file used by various development tools, including Babel, Autoprefixer, ESLint, and others, to determine the list of target browsers or environments for which your JavaScript code and styles should be transpiled or have vendor prefixes applied.
+
+- What is bundlers: vite, webpack, parcel?
+
+Vite:
+
+Type: Bundler and development server.
+Key Features: Vite is known for its incredibly fast development server. It is designed to optimize the development experience by leveraging ES modules and serving them directly to the browser without bundling during development. This results in quicker reload times and a more efficient development process.
+Use Case: Vite is particularly well-suited for modern JavaScript frameworks like Vue.js and React. It's a great choice for projects where fast development feedback is essential.
+
+Webpack:
+
+Type: Bundler.
+Key Features: Webpack is a highly configurable and extensible bundler. It can handle a wide range of tasks beyond just bundling JavaScript, such as handling assets, images, and more. While it's powerful, its configuration can be complex and sometimes daunting for beginners.
+Use Case: Webpack is a versatile choice for various types of projects, from small websites to large, complex applications. It offers extensive customization options but may require a steeper learning curve.
+
+Parcel:
+
+Type: Bundler.
+Key Features: Parcel is known for its simplicity and ease of use. It's a "zero-config" bundler, meaning you can get started without writing a complex configuration file. Parcel automatically detects and bundles your project's dependencies.
+Use Case: Parcel is great for quick prototyping, small to medium-sized projects, and for developers who prefer a more straightforward setup without the need for extensive configuration.
+
+- What is ^ - caret and ~ - tilda?
+
+Tilde (~) notation: It is used to match the most recent patch version. Tilde ~ notation freezes the major version and minor version. As we know patch updates are bug fixes that’s why we can say ~ notation allows us to automatically accept bug fixes.
+
+Example: The ~1.2.0 will update all the future patch updates. We have to write just ~1.2.0 and all the next patch update dependencies. For example, 1.2.1, 1.2.2, 1.2.5……………1.2.x.
+
+Note: Patch updates are very small security changes in a package that is why the ~version is approximately equivalent to the version.
+
+Caret (^) notation: It is used for automatically updating the minor updates along with patch updates. 
+
+Example: The ^1.2.4 will update all the future Minor and patch updates, for example, ^1.2.4 will automatically change the dependency to 1.x.x if any update occurs.
+
+
+
+
+
+
+
