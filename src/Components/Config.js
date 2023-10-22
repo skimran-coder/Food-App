@@ -1,50 +1,4 @@
-import React from "react";
-import  ReactDOM  from "react-dom/client";
-
-const root = ReactDOM.createRoot(document.getElementById("root"));
-
-const NavComponent = () =>{
-    return(
-        <div className="navbar">
-            <div className="nav-items">
-                <ul className="items">
-                    <a key={"home"} href="#home">
-                        <li>Home</li>
-                    </a>
-
-                    <a key={"about"} href="#about">
-                        <li>About</li>
-                    </a>
-
-                    <a key={"contact"} href="#contact">
-                        <li>Contact</li>
-                    </a>
-                </ul>
-            </div>
-
-            <div className="cart">
-                 <i className="fa-solid fa-cart-shopping"></i>
-            </div>
-
-        </div>
-    )
-}
-
-const Header = () =>{
-    return(
-        <div className="header">
-
-            <img src="https://images.crunchbase.com/image/upload/c_lpad,f_auto,q_auto:eco,dpr_1/aksi8creapsgodytrmay"></img>
-
-            <NavComponent/>
-
-        </div>
-    )
-}
-
-// ********************************************************************
-
-const restaurantList = [
+export const restaurantList = [
     {
       type: "restaurant",
       data: {
@@ -775,56 +729,5 @@ const restaurantList = [
       subtype: "basic",
     },
   ];
-  
 
-// ********************************************************************
-
-const CardComponent = ({cloudinaryImageId, name, avgRating, cuisines}) => {
-    
-    return (
-        <div className="card">
-            <img src= {"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" + cloudinaryImageId}
-                alt="Restaurant Image"/> 
-            <h3>{name}</h3>
-            <h4>{avgRating} star</h4>
-            <p>{cuisines.join(", ")}</p>
-        </div>
-    )
-}
-
-const Body = () =>{
-    return(
-
-
-        <div className="cards">
-
-            {
-                restaurantList.map((restaurant) => {
-                    return(
-                        <CardComponent {...restaurant.data} key={restaurant.data?.id}/>
-                    )
-                })
-            }
-            
-
-        </div>
-    )
-}
-
-const Footer = () =>{
-    return(
-        <div className="footer">Footer</div>
-    )
-}
-
-const Layout = () =>{
-    return (
-        <>
-            <Header/>
-            <Body/>
-            <Footer/>
-        </>
-    )
-}
-
-root.render(<Layout />)
+export const IMG_CDN_URL = "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/"

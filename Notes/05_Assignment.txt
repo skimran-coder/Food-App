@@ -1,0 +1,46 @@
+-- Is JSX mandatory for React?
+
+JSX is not a requirement for using React. Using React without JSX is especially convenient when you don’t want to set up compilation in your build environment.
+
+Each JSX element is just syntactic sugar for calling React.createElement(component, props, ...children). So, anything you can do with JSX can also be done with just plain JavaScript.
+
+-- Is ES6 mandatory for React?
+
+Reactjs is the best frontend library ever created. It is made by Facebook to perform several tasks in the frontend itself. ES6 is the standardization of javascript for making code more readable and more accessible.
+
+If we don’t use ES6 in react, there is an alternative to perform. We use create-react-class instead of ES6. Let’s see some variations between ES6 and the create-react-class method.
+
+-- How can I write comments in JSX?
+
+JSX is a syntax that gets compiled into valid JavaScript. Sometimes, for readability, you might need to add comments to your code. Like most programming languages, JSX has its own way to do this.
+
+To put comments inside JSX, you use the syntax {/* */} to wrap around the comment text.
+
+-- What is <React.Fragment></React.Fragment> and <></> ?
+
+React Fragments allow you to wrap or group multiple elements without adding an extra node to the DOM.
+This can be useful when rendering multiple child elements/components in a single parent component.
+React components can only render one element, and if you have multiple elements, the common practice is to wrap them in a single root element, usually a <div> wrapper.
+
+This workaround works for most cases, but sometimes adding an extra DOM element is not feasible.
+
+-- What is Virtual DOM?
+
+The virtual DOM (VDOM) is a programming concept where an ideal, or “virtual”, representation of a UI is kept in memory and synced with the “real” DOM by a library such as ReactDOM. This process is called reconciliation.
+
+This approach enables the declarative API of React: You tell React what state you want the UI to be in, and it makes sure the DOM matches that state. This abstracts out the attribute manipulation, event handling, and manual DOM updating that you would otherwise have to use to build your app.
+
+Since “virtual DOM” is more of a pattern than a specific technology, people sometimes say it to mean different things. In React world, the term “virtual DOM” is usually associated with React elements since they are the objects representing the user interface. React, however, also uses internal objects called “fibers” to hold additional information about the component tree. They may also be considered a part of “virtual DOM” implementation in React.
+
+-- What is Reconciliation in React?
+
+The reconciliation process makes React work faster. Reconciliation is the process through which React updates the Browser DOM.
+The reconciliation algorithm works by comparing the current virtual DOM tree to the updated virtual DOM tree, and making the minimum number of changes necessary to bring the virtual DOM in line with the updated state.
+
+-- What is React Fiber?
+
+React Fiber is an ongoing reimplementation of React's core algorithm. It is the culmination of over two years of research by the React team.
+
+The goal of React Fiber is to increase its suitability for areas like animation, layout, and gestures. Its headline feature is incremental rendering: the ability to split rendering work into chunks and spread it out over multiple frames.
+
+Other key features include the ability to pause, abort, or reuse work as new updates come in; the ability to assign priority to different types of updates; and new concurrency primitives.
