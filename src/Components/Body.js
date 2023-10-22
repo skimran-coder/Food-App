@@ -3,7 +3,7 @@ import CardComponent from "./Card";
 
 const Body = () =>{
     return(
-
+        
 
         <div className="cards">
 

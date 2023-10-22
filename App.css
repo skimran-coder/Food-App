@@ -18,8 +18,18 @@ body{
     background-color: rgb(0, 31, 72);
 }
 
-.header > img{
+.header-left > img{
     width: 100px;
+}
+
+.header-right {
+    display: flex;
+    gap: 7rem;
+}
+
+.search-container{
+    display: flex;
+    gap: 1rem;
 }
 
 .navbar{
