@@ -18,7 +18,7 @@
   "bugs": {
     "url": "https://github.com/skimran-coder/Learn_React/issues"
   },
-  "homepage": "https://github.com/skimran-coder/Learn_React",
+  "homepage": "https://skimran-coder.github.io/Learn_React.js/",
   "devDependencies": {
     "parcel": "^2.10.0",
     "process": "^0.11.10"
