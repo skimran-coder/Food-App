@@ -44,3 +44,44 @@ React Fiber is an ongoing reimplementation of React's core algorithm. It is the 
 The goal of React Fiber is to increase its suitability for areas like animation, layout, and gestures. Its headline feature is incremental rendering: the ability to split rendering work into chunks and spread it out over multiple frames.
 
 Other key features include the ability to pause, abort, or reuse work as new updates come in; the ability to assign priority to different types of updates; and new concurrency primitives.
+
+-- Why we need keys in React? When do we need keys in React?
+
+A “key” is a special string attribute you need to include when creating lists of elements in React. Keys are used in React to identify which items in the list are changed, updated, or deleted.
+
+Keys are used to give an identity to the elements in the lists. It is recommended to use a string as a key that uniquely identifies the items in the list.  
+
+-- Can we use index as keys in React?
+
+So many times I have seen developers use the index of an item as its key when they render a list.
+It looks elegant and it does get rid of the warning (which was the ‘real’ issue, right?). What is the danger here?
+
+It may break your application and display wrong data!
+
+Let me explain, a key is the only thing React uses to identify DOM elements. What happens if you push an item to the list or remove something in the middle? If the key is same as before React assumes that the DOM element represents the same component as before. But that is no longer true.
+
+-- What is props in React? Ways to
+
+Props simply stands for properties. They are what make components reusable. Because they perform an essential function – they pass data from one component to another.  
+
+Props act as a channel for component communication. Props are passed from parent to child and help your child access properties that made it into the parent's tree.
+
+Now, imagine we had a component in the form of a product consisting of the name of the product, its description, and price. All we have to do is write the component once and reuse it several times by altering the data that we pass through the props, which renders it to the desired output.
+
+It's worth noting that:
+
+We use props in both functional and class-based components.
+We pass props from the top to bottom. We can also refer to it as ancestor to descendant, or parent to child.
+Props are read-only. This means that once a component receives a bunch of props, we cannot change it, but we can only use and consume it and cannot modify the properties passed down to the component. If we want to modify that, we'll have to introduce what we call state in React.
+
+-- What is a Config Driven UI ?
+
+Configuration-driven UI, also known as config-driven UI or configuration-based UI - When you build real a world application so you want should your website work in many country or many place we control our fontend it is known as using Config-Driven UI . API or Backend Driven which is data Comming from API.
+
+or
+
+In a configuration-driven UI, the layout, styles, and other properties of UI elements are defined in a configuration file or database, which can be easily modified without requiring changes to the codebase. This approach makes it easier to customize the UI for different use cases or user groups, without the need for extensive coding.
+
+The configuration file or database may also define the data sources and the data to be displayed in the UI, as well as the interactions and behavior of the UI components. This allows for greater flexibility and adaptability of the UI to different use cases, as the configuration data can be easily modified or replaced without affecting the underlying application logic
+
+

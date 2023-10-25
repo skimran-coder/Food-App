@@ -1,4 +1,4 @@
-import { IMG_CDN_URL } from "./Config";
+import { IMG_CDN_URL } from "../Constant";
 
 const CardComponent = ({cloudinaryImageId, name, avgRating, cuisines}) => {
     
