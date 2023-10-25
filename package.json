@@ -7,7 +7,7 @@
     "start": "parcel index.html",
     "build": "parcel build index.html",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d dist"
   },
   "repository": {
     "type": "git",
@@ -18,7 +18,7 @@
   "bugs": {
     "url": "https://github.com/skimran-coder/Learn_React/issues"
   },
-  "homepage": "https://github.com/skimran-coder/Learn_React#readme",
+  "homepage": "https://github.com/skimran-coder/Learn_React",
   "devDependencies": {
     "parcel": "^2.10.0",
     "process": "^0.11.10"
