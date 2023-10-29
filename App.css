@@ -101,6 +101,56 @@ body{
     padding-left: 0.5rem;
 }
 
+/* Shimmer UI */
+
+
+#shim-div{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+    gap: 4rem 2rem;
+    
+    margin: 3rem auto; 
+    
+
+}
+
+.shimmer{
+    width: 250px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+#sh-1{
+    width: 100%;
+    height: 150px;
+    background-color: rgba(128, 128, 128, 0.355);
+    border-radius: 0.325rem;
+}
+
+#sh-2{
+    width: 80%;
+    height: calc((100% - 150px) / 3);
+    background-color: rgba(128, 128, 128, 0.355);
+    padding-left: 0.5rem;
+}
+
+#sh-3{
+    width: 50%;
+    height: calc((100% - 150px) / 3);
+    background-color: rgba(128, 128, 128, 0.355);
+    padding-left: 0.5rem;
+}
+
+#sh-4{
+    width: 100%;
+    height: calc((100% - 150px) / 3);
+    background-color: rgba(128, 128, 128, 0.355);
+    padding-left: 0.5rem;
+}
+
 .footer{
     width: 100%;
     text-align: center;

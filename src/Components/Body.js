@@ -1,14 +1,12 @@
-import { restaurantList } from "../Constant";
 import CardComponent from "./Card";
-
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import Shimmer from "./ShimmerUI";
 
 
 function filterCards(searchInput, restaurants){
         const filteredData = restaurants.filter((restaurant) => {
-           return restaurant?.data?.name?.toLowerCase().includes(searchInput.toLowerCase())
+           return restaurant?.info?.name?.toLowerCase().includes(searchInput.toLowerCase())
         })
-    
         return filteredData;
     }
 
@@ -19,8 +17,22 @@ function filterCards(searchInput, restaurants){
 const Body = () =>{
     
     const [searchInput, setSearchInput] = useState("")
-    const [restaurants, setRestaurants] = useState(restaurantList)
+    const [restaurants, setRestaurants] = useState(null)
+    const [filteredRestaurants, setFilteredRestaurants] = useState(null)
 
+    useEffect(() => {
+        getRestaurant();
+    },[])
+
+    async function getRestaurant(){
+        const data = await fetch ("https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP_WEB_LISTING")
+        const json = await data.json()
+        // console.log(json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle?.restaurants[1]);
+        setRestaurants(json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
+        
+    }
+
+    const dataToRender = filteredRestaurants ? filteredRestaurants : restaurants;
     return(
         
         <>
@@ -33,23 +45,23 @@ const Body = () =>{
 
             <button className="search-btn" type="button" onClick={() => {
                 const data = filterCards(searchInput, restaurants)
-                setRestaurants(data);
+                setFilteredRestaurants(data);
             }}>Search</button>
             
             </div>
+
             
+
             <div className="cards">
-
-            {
-                restaurants.map((restaurant) => {
-                    return(
-                        <CardComponent {...restaurant?.data} key={restaurant?.data?.id}/>
-                    )
-                })
-            }
-
-
+                {restaurants ? (
+                    dataToRender.map((restaurant) => (
+                    <CardComponent {...restaurant?.info} key={restaurant?.info?.id} />
+                    ))
+                ) : (
+                    <Shimmer count={12}/>
+                )}
             </div>
+
         </>
 
         
