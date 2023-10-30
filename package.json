@@ -5,28 +5,18 @@
   "scripts": {
     "test": "jest",
     "start": "parcel index.html",
-    "build": "parcel build index.html",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/skimran-coder/Learn_React.git"
+    "build": "parcel build index.html"
   },
   "author": "Sk. Imran Hussain",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/skimran-coder/Learn_React/issues"
-  },
-  "homepage": "https://skimran-coder.github.io/Learn_React.js/",
   "devDependencies": {
     "parcel": "^2.10.0",
     "process": "^0.11.10"
   },
   "dependencies": {
-    "gh-pages": "^6.0.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.17.0"
   },
   "browserslist": [
     "last 2 versions"

@@ -1,6 +1,9 @@
 const AppLogo = () =>{
     return(
-        <img src="https://images.crunchbase.com/image/upload/c_lpad,f_auto,q_auto:eco,dpr_1/aksi8creapsgodytrmay" className="app-logo"></img>
+        <a href="/">
+            <img src="https://images.crunchbase.com/image/upload/c_lpad,f_auto,q_auto:eco,dpr_1/aksi8creapsgodytrmay" className="app-logo"></img>
+        </a>
+        
     )
 }
 
