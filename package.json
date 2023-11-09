@@ -9,6 +9,10 @@
   },
   "author": "Sk. Imran Hussain",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/skimran-coder/Food-App"
+  },
   "devDependencies": {
     "parcel": "^2.10.0",
     "process": "^0.11.10"
@@ -19,6 +23,6 @@
     "react-router-dom": "^6.17.0"
   },
   "browserslist": [
-    "last 2 versions"
+    "last 10 versions"
   ]
 }

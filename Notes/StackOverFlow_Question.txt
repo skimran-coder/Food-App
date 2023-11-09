@@ -1,0 +1,140 @@
+[Page did not render data as API call is not taking place](https://i.stack.imgur.com/Vblk9.png)
+[It loads when opened console window and refreshed](https://i.stack.imgur.com/ExQdz.png)
+
+Working on a food app using public API of swiggy. Everything else is working fine tested API but the content do not render when the page loads. I think the problem is with the API call as it is not taking place when the page loads. API only calls when I opened the console window and refresh the page. 
+
+**HTML**
+
+``` 
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="App.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <title>React App</title>
+</head>
+<body>
+    <div id="root">Not Render</div>
+
+   
+
+     <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script type="module" src="./src/App.js"></script>
+</body>
+</html>
+
+```
+
+**Card.js**
+
+``` JavaScript
+
+    
+
+const CardComponent = ({cloudinaryImageId, name, avgRating, cuisines}) => {
+    
+    return (
+        <div className="card">
+            <img src= {"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" + cloudinaryImageId}
+                alt="Restaurant Image"/> 
+            <h3>{name}</h3>
+            <h4>{avgRating} star</h4>
+            <p>{cuisines.join(", ")}</p>
+        </div>
+    )
+}
+
+export default CardComponent;
+
+```
+
+**App.js**
+
+```
+
+    import React from "react";
+import ReactDOM  from "react-dom/client";
+import CardComponent from "./Components/Card";
+import { useState, useEffect } from "react";
+
+
+
+function filterCards(searchInput, restaurants){
+        const filteredData = restaurants?.filter((restaurant) => {
+           return restaurant?.info?.name?.toLowerCase().includes(searchInput.toLowerCase())
+        })
+        return filteredData;
+    }
+
+
+
+
+
+const Body = () =>{
+    
+    const [searchInput, setSearchInput] = useState("")
+    const [restaurants, setRestaurants] = useState(null)
+    const [filteredRestaurants, setFilteredRestaurants] = useState(null)
+
+    useEffect(() => {
+        getRestaurant();
+    },[])
+
+    async function getRestaurant(){
+        const data = await fetch ("https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP_WEB_LISTING")
+        const json = await data.json()
+        // console.log(json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle?.restaurants[1]);
+        setRestaurants(json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
+        
+    }
+
+    const dataToRender = filteredRestaurants ? filteredRestaurants : restaurants;
+    return(
+        
+        <>
+            
+            <div className="search-container">
+    
+            <input type="search" placeholder="Search..." value={searchInput} className="search-bar" onChange={(e) => {
+                setSearchInput(e.target.value);
+            }}/>
+
+            <button className="search-btn" type="button" onClick={() => {
+                const data = filterCards(searchInput, restaurants)
+                setFilteredRestaurants(data);
+            }}>Search</button>
+            
+            </div>
+
+            
+
+            <div className="cards">
+                {restaurants ? (
+                    dataToRender.map((restaurant) => (
+                    <CardComponent {...restaurant?.info} key={restaurant?.info?.id} />
+                    ))
+                ) : (
+                    <p>Loading...</p>
+                )}
+            </div>
+
+        </>
+
+        
+    )
+}
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+
+root.render(<Body/>);
+
+```
+
+Please help me out to fix this. I've provided entire code below.
+
+[Code](https://github.com/skimran-coder/Learn_React.js)
+
+It should render the data from API on the first load without opening developer tools and refreshing the page.

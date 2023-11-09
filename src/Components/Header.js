@@ -1,8 +1,14 @@
+import { Link } from "react-router-dom"
+
 const AppLogo = () =>{
     return(
-        <a href="/">
-            <img src="https://images.crunchbase.com/image/upload/c_lpad,f_auto,q_auto:eco,dpr_1/aksi8creapsgodytrmay" className="app-logo"></img>
-        </a>
+        
+            <a href="/" className="app-info">
+            <img src="https://cdn.pixabay.com/photo/2017/02/17/17/33/food-2074638_1280.png" className="app-logo"></img>
+            
+            <h1 className="app-name"><span className="name-F">F</span>ood<span className="name-S">S</span>tore</h1>
+            </a>
+        
         
     )
 }
@@ -12,17 +18,17 @@ const NavComponent = () =>{
         <div className="navbar">
             <div className="nav-items">
                 <ul className="items">
-                    <a key={"home"} href="#home">
+                    <Link key={"home"} to="/">
                         <li>Home</li>
-                    </a>
+                    </Link>
 
-                    <a key={"about"} href="#about">
+                    <Link key={"about"} to="/about">
                         <li>About</li>
-                    </a>
+                    </Link>
 
-                    <a key={"contact"} href="#contact">
+                    <Link key={"contact"} to="/contact">
                         <li>Contact</li>
-                    </a>
+                    </Link>
                 </ul>
             </div>
 
