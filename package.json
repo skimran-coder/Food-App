@@ -4,8 +4,8 @@
   "description": "",
   "scripts": {
     "test": "jest",
-    "start": "parcel index.html",
-    "build": "parcel build index.html"
+    "start": "parcel ./Public/index.html",
+    "build": "parcel build ./Public/index.html"
   },
   "author": "Sk. Imran Hussain",
   "license": "ISC",

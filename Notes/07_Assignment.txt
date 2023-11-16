@@ -1,0 +1,13 @@
+What is a Microservice?
+
+A microservice is a software architectural style that structures an application as a collection of small, independent services, each of which is focused on performing a specific business capability. Microservices are designed to be modular, independently deployable, and loosely coupled.
+
+What is Monolith architecture?
+
+Monolithic architecture is a traditional software development approach where an entire application is developed as a single, tightly integrated unit. In a monolithic architecture, all the components and features of the application are bundled together, and they share the same codebase, database, and server. The term "monolith" refers to the fact that the application is a single, indivisible unit.
+
+What is the difference between Monolith and Microservice?
+
+Monolithic applications typically consist of a client-side UI, a database, and a server-side application. Developers build all of these modules on a single code base.
+
+On the other hand, in a distributed architecture, each microservice works to accomplish a single feature or business logic. Instead of exchanging data within the same code base, microservices communicate with an API.

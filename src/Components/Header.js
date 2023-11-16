@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom"
+import { LOGO_CDN_URL } from "../Constant"
 
 const AppLogo = () =>{
     return(
         
             <a href="/" className="app-info">
-            <img src="https://cdn.pixabay.com/photo/2017/02/17/17/33/food-2074638_1280.png" className="app-logo"></img>
+            <img src={LOGO_CDN_URL} className="app-logo"></img>
             
             <h1 className="app-name"><span className="name-F">F</span>ood<span className="name-S">S</span>tore</h1>
             </a>

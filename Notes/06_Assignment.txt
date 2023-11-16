@@ -1,0 +1,15 @@
+1. What is the difference between Named Export, Default export and * as export?
+
+Default exports are used to export a single "main" value from a module, while named exports allow us to export multiple values with specific names. Default exports allow us to import the exported value with any name in the importing module, while named exports require us to use the exact exported names when importing.
+
+The * as syntax allows you to import all exports from a module as properties of an object. In the example, myModule is an object that contains all the exports from the module module.
+
+2 What are React Hooks?
+
+React Hooks are simple JavaScript functions that we can use to isolate the reusable part from a functional component. Hooks can be stateful and can manage side-effects. React provides a bunch of standard in-built hooks: useState : To manage states. Returns a stateful value and an updater function to update it.
+
+3. Why do we need a useState Hook?
+
+The React useState Hook allows you to have state variables in functional components. You pass the initial state to this function, and it returns a variable with the current state value (not necessarily the initial state) and another function to update this value.
+
+

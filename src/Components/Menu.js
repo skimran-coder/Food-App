@@ -11,21 +11,20 @@ const Menu = () => {
     const [restaurantMenu, setRestaurantMenu] = useState([])
 
     useEffect(() => {
-        getRestaurant();
+        getRestaurantMenu();
     },[])
 
-    async function getRestaurant(){
+    async function getRestaurantMenu(){
         const data = await fetch(`https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=22.5327517&lng=88.376133&restaurantId=${resid}&catalog_qa=undefined&submitAction=ENTER`)
         const json = await data.json()
         setRestaurant(json?.data?.cards[0]?.card?.card?.info)
-        setRestaurantMenu(json?.data?.cards[3]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card?.itemCards)
+        setRestaurantMenu(json?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card?.itemCards)
     }
-// json?.cards[3]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card?.itemCards
-    console.log(restaurantMenu);
+
     return (
         restaurantMenu ? (
         <div className='restaurant-menu'>
-            <div className='right'>
+            <div className='left'>
                 <h1>Menu ID:{resid}</h1>
                 <img src={IMG_CDN_URL + restaurant?.cloudinaryImageId}/>
                 <h2>Name: {restaurant?.name}</h2>
@@ -36,12 +35,12 @@ const Menu = () => {
                 <p>{restaurant?.costForTwoMessage}</p>
             </div>
 
-            <div className='left'>
+            <div className='right'>
                 <h2>Menu</h2>
                 <ul>
                     {
-                    restaurantMenu?.map((restaurant, index) => (
-                        <li key={index}>{restaurant?.card?.info?.name}</li>
+                    restaurantMenu?.map((restaurant) => (
+                        <li key={restaurant?.card?.info?.id}>{restaurant?.card?.info?.name}</li>
                     ))
                     }
                 </ul>
