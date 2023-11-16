@@ -4,6 +4,8 @@ import Shimmer from "./ShimmerUI";
 import { Link } from "react-router-dom";
 import useRestaurant from "../utils/useRestaurant";
 import SearchBar from "./SearchBar";
+import useOnline from "../utils/useOnline";
+import NoInternet from "./NoInternet";
 
 const Body = () =>{
     
@@ -11,6 +13,14 @@ const Body = () =>{
     const restaurants = useRestaurant()
 
     const dataToRender = filteredRestaurants ? filteredRestaurants : restaurants;
+
+    const isOnline = useOnline()
+
+    if (isOnline) {
+        return(
+            <NoInternet />
+        )
+    } 
 
     return(
         

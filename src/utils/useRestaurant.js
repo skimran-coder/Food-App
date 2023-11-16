@@ -9,7 +9,6 @@ const useRestaurant = () => {
             const data = await fetch (FETCH_CARD_URL)
             const json = await data.json()
             setRestaurants(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
-            console.log("API call done");
             
         } catch (error) {
             console.log(error);

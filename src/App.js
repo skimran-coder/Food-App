@@ -1,14 +1,15 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import ReactDOM  from "react-dom/client";
 import Header from "./Components/Header";
 import Body from "./Components/Body";
 import Footer from "./Components/Footer";
-import About from "./Components/About";
 import Error from "./Components/Error"
 import Contact from "./Components/Contact";
 import Menu from "./Components/Menu"
 import { RouterProvider, createBrowserRouter, Outlet } from "react-router-dom";
 import Profile from "./Components/Profile";
+
+const About = lazy(() => import("./Components/About"))
 
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -35,7 +36,9 @@ const appRouter = createBrowserRouter([
             },
             {
                 path: "/about",
-                element: <About />,
+                element: <Suspense fallback={<div>Loading...</div>}>
+                            <About />
+                        </Suspense>,
                 children: [
                     {
                         path: "profile",
