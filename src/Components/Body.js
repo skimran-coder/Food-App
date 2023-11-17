@@ -30,7 +30,7 @@ const Body = () =>{
             <SearchBar restaurants={restaurants} setFilteredRestaurants={setFilteredRestaurants}/>
             
 
-            <div className="cards">
+            <div className="cards flex flex-wrap justify-start gap-x-8 gap-y-16 my-12 mx-auto w-[90%]">
                 {restaurants ? (
                     dataToRender?.map((restaurant) => (
                     <Link to={"/restaurant/" + restaurant?.info?.id} key={restaurant?.info?.id} className="card-link">

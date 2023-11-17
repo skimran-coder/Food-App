@@ -23,7 +23,7 @@ const Menu = () => {
 
     return (
         restaurantMenu ? (
-        <div className='restaurant-menu'>
+        <div className='restaurant-menu flex gap-20'>
             <div className='left'>
                 <h1>Menu ID:{resid}</h1>
                 <img src={IMG_CDN_URL + restaurant?.cloudinaryImageId}/>

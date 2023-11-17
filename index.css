@@ -73,7 +73,7 @@ body{
 }
 
 .items > a > li:hover{
-    color: greenyellow;
+    color: #adff2f;
 }
 
 .cart > i{
@@ -117,7 +117,7 @@ body{
 }
 
 .search-bar:focus{
-    border-color: rgb(0, 31, 72);
+    border-color: #001f48;
 }
 
 .search-btn{
@@ -136,7 +136,7 @@ body{
 
 .search-btn:hover{
     background-color: orange;
-    border-color: rgb(0, 31, 72);
+    border-color: #001f48;
     color: white;
 }
 
@@ -219,7 +219,7 @@ body{
 #sh-1{
     width: 100%;
     height: 150px;
-    background-color: rgba(128, 128, 128, 0.355);
+    background-color: #8080805b;
     border-radius: 0.325rem;
 }
 
