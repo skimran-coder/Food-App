@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import { LOGO_CDN_URL } from "../Constant"
+import { LOGO_CDN_URL } from "../constant"
 
 const AppLogo = () =>{
     return(

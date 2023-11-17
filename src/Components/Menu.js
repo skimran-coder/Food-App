@@ -1,4 +1,4 @@
-import { IMG_CDN_URL } from '../Constant';
+import { IMG_CDN_URL } from '../constant';
 import { useEffect, useState } from 'react';
 import {useParams} from 'react-router-dom'
 import Shimmer from './ShimmerUI';

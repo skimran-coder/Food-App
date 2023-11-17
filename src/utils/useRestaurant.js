@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { FETCH_CARD_URL } from "../Constant"
+import { FETCH_CARD_URL } from "../constant"
 
 const useRestaurant = () => {
     const [restaurants, setRestaurants] = useState(null)
