@@ -24,13 +24,15 @@ const Body = () =>{
 
     return(
         
-        <>
+       <div className="bg-myGray w-full">
+             <div className=" max-w-[1200px] w-[90%] mx-auto ">
             
             
             <SearchBar restaurants={restaurants} setFilteredRestaurants={setFilteredRestaurants}/>
+
             
 
-            <div className="cards flex flex-wrap justify-start gap-x-8 gap-y-16 my-12 mx-auto w-[90%]">
+            <div className="cards  flex flex-wrap justify-between py-16 gap-x-8 gap-y-16 mx-auto w-[90%]">
                 {restaurants ? (
                     dataToRender?.map((restaurant) => (
                     <Link to={"/restaurant/" + restaurant?.info?.id} key={restaurant?.info?.id} className="card-link">
@@ -43,7 +45,8 @@ const Body = () =>{
                 )}
             </div>
 
-        </>
+        </div>
+       </div>
 
         
     )

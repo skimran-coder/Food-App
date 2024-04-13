@@ -1,9 +1,12 @@
 const NoInternet = () => {
     return(
-        <div>
-            No Internet!!!
+        <div className="flex justify-center items-center">
+            
+            <h2>`Sorry! Shop from your nearest store 
+                            ~Sk. Imran Hussain`
+            </h2>
         </div>
     )
 }
 
-export default NoInternet
+export default NoInternet;
