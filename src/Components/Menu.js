@@ -1,14 +1,14 @@
-import { IMG_CDN_URL } from '../constant';
 import { useEffect, useState } from 'react';
 import {useParams} from 'react-router-dom'
 import Shimmer from './ShimmerUI';
+import MenuItems from './MenuItems';
 
 const Menu = () => {
     const params = useParams()
     const {resid} = params
 
     const [restaurant, setRestaurant] = useState({})
-    const [restaurantMenu, setRestaurantMenu] = useState([])
+    const [restaurantMenu, setRestaurantMenu] = useState(null)
 
     useEffect(() => {
         getRestaurantMenu();
@@ -23,27 +23,27 @@ const Menu = () => {
 
     return (
         restaurantMenu ? (
-        <div className='restaurant-menu flex gap-20'>
-            <div className='left'>
-                <h1>Menu ID:{resid}</h1>
-                <img src={IMG_CDN_URL + restaurant?.cloudinaryImageId}/>
-                <h2>Name: {restaurant?.name}</h2>
-                <p>{`City: ${restaurant?.slugs?.city.toUpperCase()}`}</p>
-                <p>Locality: {restaurant?.locality}</p>
-                <p>Area Name: {restaurant?.areaName}</p>
-                <p>Cuisines: {restaurant?.cuisines?.join(", ")}</p>
-                <p>{restaurant?.costForTwoMessage}</p>
+        <div className='restaurant-menu w-3/5 mx-auto my-0  p-2 flex flex-col gap-8'>
+            <div className='top py-4'>
+                {/* <h1>Menu ID:{resid}</h1> */}
+                <h2 className='font-bold text-xl'>{restaurant?.name}</h2>
+                <p className='opacity-80 text-sm'>{restaurant?.cuisines?.join(", ")}</p>
+                <span className='opacity-80 text-sm'>{restaurant?.locality}</span>
+                <span className='opacity-80 text-sm'>{", " + restaurant?.areaName}</span>
+                <p className='text-green-500 font-semibold text-base leading-3 pt-1'><i class="fa-solid fa-star pr-1"></i>{restaurant?.avgRating}</p>
             </div>
 
-            <div className='right'>
-                <h2>Menu</h2>
-                <ul>
+            <div className='bottom flex flex-col gap-4' >
+                <h2 className='font-semibold my-2'>Menu</h2>
+                
                     {
                     restaurantMenu?.map((restaurant) => (
-                        <li key={restaurant?.card?.info?.id}>{restaurant?.card?.info?.name}</li>
+                        <div key={restaurant?.card?.info?.id} className='cursor-pointer'>
+                            <MenuItems restaurant={restaurant}/>
+                        </div>
                     ))
                     }
-                </ul>
+                
             </div>
         </div>
         ) : (

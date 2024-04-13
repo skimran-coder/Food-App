@@ -8,7 +8,7 @@ const useRestaurant = () => {
         try {
             const data = await fetch (FETCH_CARD_URL)
             const json = await data.json()
-            setRestaurants(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
+            setRestaurants(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
             
         } catch (error) {
             console.log(error);

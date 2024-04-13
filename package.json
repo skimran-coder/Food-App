@@ -25,6 +25,8 @@
     "react-router-dom": "^6.17.0"
   },
   "browserslist": [
-    "last 10 versions"
+    "last 2 versions",
+    "> 0.5%",
+    "IE 11"
   ]
 }
