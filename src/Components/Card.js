@@ -1,5 +1,5 @@
 import { IMG_CDN_URL } from "../Constant";
-import star from '../../public/asset/star.png'
+import star from '../../Public/asset/star.png'
 
 const CardComponent = ({cloudinaryImageId, name, avgRating, cuisines, locality, areaName}) => {
 

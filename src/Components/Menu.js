@@ -3,7 +3,7 @@ import {useParams} from 'react-router-dom'
 import { IMG_CDN_URL } from '../Constant';
 import Shimmer from './ShimmerUI';
 import MenuItems from './MenuItems';
-import star from '../../public/asset/star.png'
+import star from '../../Public/asset/star.png'
 
 const Menu = () => {
     const params = useParams()
