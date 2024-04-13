@@ -1,4 +1,4 @@
-import { IMG_CDN_URL } from "../constant";
+import { IMG_CDN_URL } from "../Constant";
 
 const MenuItems = ({restaurant}) => {
     return(
