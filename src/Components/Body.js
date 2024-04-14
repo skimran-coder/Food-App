@@ -24,7 +24,7 @@ const Body = () =>{
 
     return(
         
-       <div className="bg-myGray w-full">
+       <div className=" w-full">
              <div className=" max-w-[1200px] w-[90%] mx-auto ">
             
             

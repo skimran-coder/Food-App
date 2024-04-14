@@ -53,7 +53,7 @@ const NavComponent = () =>{
 
 const Header = () =>{
     return(
-        <div className="header w-full max-h-24 flex justify-between px-20 py-6 items-center bg-myBlack">
+        <div className="header w-full h-24 flex justify-between flex-wrap px-20  items-center bg-myBlack">
 
                 <AppLogo />
                 <NavComponent/>

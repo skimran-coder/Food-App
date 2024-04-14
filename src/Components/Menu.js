@@ -29,7 +29,7 @@ const Menu = () => {
          (
         <div className=' restaurant-menu w-3/5 mx-auto my-0  p-2 flex flex-col gap-8'>
             
-            <div className='flex justify-between'>
+            <div className='flex justify-between border-b-4 border-myYellow bg-myGray2 p-4 rounded-sm shadow-sm'>
             <div className='top py-4'>
                 
                 <h2 className='pl-2 font-serif text-xl'>{restaurant?.name}</h2>
@@ -51,10 +51,10 @@ const Menu = () => {
             
 
             </div>
+            <h2 className='font-bold font-serif text-xl p-4'>Menu</h2>
 
-
-            <div className='bottom flex flex-col gap-4' >
-                <h2 className='font-semibold my-2'>Menu</h2>
+            <div className='bottom flex flex-col gap-4 bg-myGray2 p-4 rounded-sm shadow-sm' >
+                
                 
                     {
                     restaurantMenu?.map((restaurant) => (
