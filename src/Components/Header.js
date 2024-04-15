@@ -27,14 +27,19 @@ const NavComponent = () =>{
                 <ul className="items flex gap-8 text-white font-bold">
                     <Link key={"home"} to="/" >
                         <li className="transition-all duration-300 hover:text-myYellow">Home</li>
+                        <div className="bg-myYellow block w-14 h-1"> </div>
                     </Link>
 
                     <Link key={"about"} to="/about">
                         <li className="transition-all duration-300 hover:text-myYellow">About</li>
+                        
+
                     </Link>
 
                     <Link key={"contact"} to="/contact">
                         <li className="transition-all duration-300 hover:text-myYellow">Contact</li>
+                        
+
                     </Link>
                 </ul>
             </div>
