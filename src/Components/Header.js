@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom"
 import logo from '../../Public/asset/logo.png'
+import { useState } from "react";
 
 
 const AppLogo = () =>{
@@ -20,24 +21,58 @@ const AppLogo = () =>{
     )
 }
 
+
+
 const NavComponent = () =>{
+    const [currentTab, setCurrentTab] = useState({
+        home : true,
+        about : false,
+        contact : false
+    })
+    const [About, setAbout] = useState(false)
+    const [Contact, setContact] = useState(false)
+
     return(
         <div className="navbar flex gap-8 text-xl items-center">
             <div className="nav-items">
                 <ul className="items flex gap-8 text-white font-bold">
                     <Link key={"home"} to="/" >
-                        <li className="transition-all duration-300 hover:text-myYellow">Home</li>
-                        <div className="bg-myYellow block w-14 h-1"> </div>
+                        <li className={`transition-all duration-300 hover:text-myYellow underline-offset-8 decoration-2 ${currentTab.home? "text-myYellow underline" : "text-white no-underline"}`} onClick={() =>{
+                            
+                                setCurrentTab({
+                                    home : true,
+                                    about : false,
+                                    contact : false 
+                                })
+                            
+                        }}>Home</li>
+                        
                     </Link>
 
                     <Link key={"about"} to="/about">
-                        <li className="transition-all duration-300 hover:text-myYellow">About</li>
+                        <li className={`transition-all duration-300 hover:text-myYellow underline-offset-8 decoration-2 ${currentTab.about? "text-myYellow underline": " text-white no-underline"}`} onClick={() =>{
+                           
+                            setCurrentTab({
+                                home : false,
+                                about : true,
+                                contact : false 
+                            })
+                        
+                        }}>About</li>
                         
 
                     </Link>
 
                     <Link key={"contact"} to="/contact">
-                        <li className="transition-all duration-300 hover:text-myYellow">Contact</li>
+                        <li className={`transition-all duration-300 hover:text-myYellow underline-offset-8 decoration-2  ${currentTab.contact? "text-myYellow underline": "text-white no-underline"} `} onClick={() =>{
+                          
+                            setCurrentTab({
+                                home : false,
+                                about : false,
+                                contact : true 
+                            })
+                        
+                        }}>Contact</li>
                         
 
                     </Link>
