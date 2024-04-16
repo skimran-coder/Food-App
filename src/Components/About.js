@@ -11,11 +11,11 @@ const Section = ({title, description}) =>{
         <h2 className={`text-2xl font-bold py-1 font-serif transition-all duration-300 ${isVisible ? "text-white" : "text-stone-300"}`}>{title}</h2>
         {
           !isVisible ?  
-          <i class="fa-solid fa-angle-down text-2xl pr-4 cursor-pointer transition-all duration-300" onClick={() =>{
+          <i class={`fa-solid fa-angle-down text-2xl pr-4 cursor-pointer transition-all duration-300 ${isVisible ? "text-white" : "text-stone-300"}`} onClick={() =>{
             setIsVisible(!isVisible)
           }}></i> 
           :
-          <i class="fa-solid fa-angle-up text-2xl pr-4 cursor-pointer transition-all duration-300" onClick={() =>{
+          <i class={`fa-solid fa-angle-up text-2xl pr-4 cursor-pointer transition-all duration-300 ${isVisible ? "text-white" : "text-stone-300"}`} onClick={() =>{
             setIsVisible(!isVisible)
           }}></i>
         } 
