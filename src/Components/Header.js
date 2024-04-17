@@ -24,8 +24,8 @@ const AppLogo = () =>{
 
 
 const NavComponent = () =>{
-    const [currentTab, setCurrentTab] = useState("home")
-   
+    
+    const [currentTab, setCurrentTab] = useState(localStorage ? localStorage.getItem("currentTab") : "home")
 
     return(
         <div className="navbar flex gap-8 text-xl items-center">
@@ -33,8 +33,9 @@ const NavComponent = () =>{
                 <ul className="items flex gap-8 text-white font-bold">
                     <Link key={"home"} to="/" >
                         <li className={`transition-all duration-300 hover:text-myYellow underline-offset-8 decoration-2 ${currentTab === "home"? "text-myYellow underline" : "text-white no-underline"}`} onClick={() =>{
-                            
-                                setCurrentTab(currentTab === "home" ? null : "home")
+                                currentTab === "home" ? null :
+                                localStorage.setItem("currentTab", "home")
+                                setCurrentTab(localStorage.getItem("currentTab"))
                             
                         }}>Home</li>
                         
@@ -42,20 +43,22 @@ const NavComponent = () =>{
 
                     <Link key={"about"} to="/about">
                         <li className={`transition-all duration-300 hover:text-myYellow underline-offset-8 decoration-2 ${currentTab === "about" ? "text-myYellow underline": " text-white no-underline"}`} onClick={() =>{
+                                currentTab === "about" ? null :
+                                localStorage.setItem("currentTab", "about")
+                                setCurrentTab(localStorage.getItem("currentTab"))
                             
-                            setCurrentTab(currentTab === "about" ? null : "about")
-                        
-                    }}>About</li>
+                        }}>About</li>
                         
 
                     </Link>
 
                     <Link key={"contact"} to="/contact">
                         <li className={`transition-all duration-300 hover:text-myYellow underline-offset-8 decoration-2  ${currentTab === "contact" ? "text-myYellow underline": "text-white no-underline"} `} onClick={() =>{
+                                currentTab === "contact" ? null :
+                                localStorage.setItem("currentTab", "contact")
+                                setCurrentTab(localStorage.getItem("currentTab"))
                             
-                            setCurrentTab(currentTab === "contact" ? null : "contact")
-                        
-                    }}>Contact</li>
+                        }}>Contact</li>
                         
 
                     </Link>

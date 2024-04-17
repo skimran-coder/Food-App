@@ -1,4 +1,3 @@
-import { Outlet } from "react-router-dom";
 import { aboutMe, aboutUs, featuresDesc } from "../Constant";
 import { useState } from "react";
 
@@ -34,21 +33,32 @@ const Section = ({title, description, isVisible, setIsVisible}) =>{
 }
 
 const About = () => {
-  const [visibleSection, setVisibleSection] = useState("showFeature")
+  const [visibleSection, setVisibleSection] = useState(localStorage ? localStorage.getItem('visibleSection') : "showFeature")
 
     return(
         <div className="w-3/5 m-auto my-4 min-h-full">
-            <Section title={"Features"} description={featuresDesc} isVisible={visibleSection === "showFeature"} setIsVisible={() => setVisibleSection(
-              visibleSection === "showFeature" ? !visibleSection : "showFeature"
-          )}/>
-            <Section title={"About Us"} description={aboutUs} isVisible={visibleSection === "showAboutUs"}  setIsVisible={() => setVisibleSection(
-              visibleSection === "showAboutUs" ? !visibleSection : "showAboutUs"
-          )}/>
-            <Section title={"About Me"} description={aboutMe} isVisible={visibleSection === "showAboutMe"}  setIsVisible={() => setVisibleSection(
-              visibleSection === "showAboutMe" ? !visibleSection : "showAboutMe"
-          )}/>
+            <Section title={"Features"} description={featuresDesc} isVisible={visibleSection === "showFeature"}  setIsVisible={() => {
+      if (visibleSection !== "showFeature") {
+        localStorage.setItem("visibleSection", "showFeature");
+        setVisibleSection("showFeature");
+      }
+    }}/>
 
-            <Outlet />
+            <Section title={"About Us"} description={aboutUs} isVisible={visibleSection === "showAboutUs"}   setIsVisible={() => {
+      if (visibleSection !== "showAboutUs") {
+        localStorage.setItem("visibleSection", "showAboutUs");
+        setVisibleSection("showAboutUs");
+      }
+    }}/>
+
+            <Section title={"About Me"} description={aboutMe} isVisible={visibleSection === "showAboutMe"}   setIsVisible={() => {
+      if (visibleSection !== "showAboutMe") {
+        localStorage.setItem("visibleSection", "showAboutMe");
+        setVisibleSection("showAboutMe");
+      }
+    }}/>
+
+            
 
         </div>
     )

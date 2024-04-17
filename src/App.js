@@ -6,10 +6,9 @@ import Footer from "./Components/Footer";
 import Error from "./Components/Error"
 import Contact from "./Components/Contact";
 import Menu from "./Components/Menu"
+import About from "./Components/About";
 import { RouterProvider, createBrowserRouter, Outlet } from "react-router-dom";
-import Profile from "./Components/Profile";
 
-const About = lazy(() => import("./Components/About"))
 
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -36,15 +35,7 @@ const appRouter = createBrowserRouter([
             },
             {
                 path: "/about",
-                element: <Suspense fallback={<div>Loading...</div>}>
-                            <About />
-                        </Suspense>,
-                children: [
-                    {
-                        path: "profile",
-                        element: <Profile />
-                    }
-                ]
+                element: <About />            
             },
             {
                 path: "/contact",
