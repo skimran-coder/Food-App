@@ -24,55 +24,38 @@ const AppLogo = () =>{
 
 
 const NavComponent = () =>{
-    const [currentTab, setCurrentTab] = useState({
-        home : true,
-        about : false,
-        contact : false
-    })
-    const [About, setAbout] = useState(false)
-    const [Contact, setContact] = useState(false)
+    const [currentTab, setCurrentTab] = useState("home")
+   
 
     return(
         <div className="navbar flex gap-8 text-xl items-center">
             <div className="nav-items">
                 <ul className="items flex gap-8 text-white font-bold">
                     <Link key={"home"} to="/" >
-                        <li className={`transition-all duration-300 hover:text-myYellow underline-offset-8 decoration-2 ${currentTab.home? "text-myYellow underline" : "text-white no-underline"}`} onClick={() =>{
+                        <li className={`transition-all duration-300 hover:text-myYellow underline-offset-8 decoration-2 ${currentTab === "home"? "text-myYellow underline" : "text-white no-underline"}`} onClick={() =>{
                             
-                                setCurrentTab({
-                                    home : true,
-                                    about : false,
-                                    contact : false 
-                                })
+                                setCurrentTab(currentTab === "home" ? null : "home")
                             
                         }}>Home</li>
                         
                     </Link>
 
                     <Link key={"about"} to="/about">
-                        <li className={`transition-all duration-300 hover:text-myYellow underline-offset-8 decoration-2 ${currentTab.about? "text-myYellow underline": " text-white no-underline"}`} onClick={() =>{
-                           
-                            setCurrentTab({
-                                home : false,
-                                about : true,
-                                contact : false 
-                            })
+                        <li className={`transition-all duration-300 hover:text-myYellow underline-offset-8 decoration-2 ${currentTab === "about" ? "text-myYellow underline": " text-white no-underline"}`} onClick={() =>{
+                            
+                            setCurrentTab(currentTab === "about" ? null : "about")
                         
-                        }}>About</li>
+                    }}>About</li>
                         
 
                     </Link>
 
                     <Link key={"contact"} to="/contact">
-                        <li className={`transition-all duration-300 hover:text-myYellow underline-offset-8 decoration-2  ${currentTab.contact? "text-myYellow underline": "text-white no-underline"} `} onClick={() =>{
-                          
-                            setCurrentTab({
-                                home : false,
-                                about : false,
-                                contact : true 
-                            })
+                        <li className={`transition-all duration-300 hover:text-myYellow underline-offset-8 decoration-2  ${currentTab === "contact" ? "text-myYellow underline": "text-white no-underline"} `} onClick={() =>{
+                            
+                            setCurrentTab(currentTab === "contact" ? null : "contact")
                         
-                        }}>Contact</li>
+                    }}>Contact</li>
                         
 
                     </Link>
