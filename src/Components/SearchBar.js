@@ -13,7 +13,7 @@ const SearchBar = ({restaurants, setFilteredRestaurants}) => {
                 setSearchInput(e.target.value);
             }} />
 
-            <button className="search-btn py-2 px-5 border border-solid border-gray-400 rounded-md bg-myGray text-myBlack cursor-pointer font-medium text-sm tracking-widest transition-all duration-300 hover:bg-myYellow hover:border-myGray hover:text-white " type="button" onClick={() => {
+            <button className="search-btn py-2 px-5 border border-solid border-gray-400 rounded-md bg-myGray text-myBlack cursor-pointer font-medium text-sm tracking-widest transition-all ease-in-out duration-500 hover:bg-myYellow hover:border-myGray hover:text-white " type="button" onClick={() => {
                 const data = filterCards(searchInput, restaurants)
                 setFilteredRestaurants(data);
             }}>Search</button>

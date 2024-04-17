@@ -9,10 +9,10 @@ const Footer = () =>{
             
             
                 <a href="https://www.linkedin.com/in/sk-imran-hussain/" target="_blank"><i class="fa-brands fa-linkedin icon  cursor-pointer hover:text-myYellow transition-all duration-300" ></i></a>
-                <a href="https://github.com/skimran-coder" target="_blank"><i class="fa-brands fa-github icon cursor-pointer hover:text-myYellow transition-all duration-300"></i></a>
+                <a href="https://github.com/skimran-coder" target="_blank"><i class="fa-brands fa-github icon cursor-pointer hover:text-myYellow transition-all duration-300 "></i></a>
                 <a href="https://twitter.com/skimranhussain" target="_blank"><i class="fa-brands fa-x-twitter icon cursor-pointer hover:text-myYellow transition-all duration-300"></i></a>
                 <a href="https://www.instagram.com/skimranhussain4/" target="_blank"><i class="fa-brands fa-instagram icon cursor-pointer hover:text-myYellow transition-all duration-300"></i></a>
-                <a href="mailto:skimranhussain4.com"  target="_blank"><i class="fa-regular fa-envelope icon cursor-pointer hover:text-myYellow transition-all duration-300"></i></a>
+                <a href="mailto:skimranhussain4.com"  target="_blank"><i class="fa-regular fa-envelope icon cursor-pointer hover:text-myYellow transition-all duration-300 "></i></a>
             
         </div>
     </div>

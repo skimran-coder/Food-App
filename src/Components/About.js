@@ -42,6 +42,10 @@ const About = () => {
         localStorage.setItem("visibleSection", "showFeature");
         setVisibleSection("showFeature");
       }
+      else{
+        localStorage.setItem("visibleSection", null);
+        setVisibleSection(localStorage.getItem("visibleSection"));
+      }
     }}/>
 
             <Section title={"About Us"} description={aboutUs} isVisible={visibleSection === "showAboutUs"}   setIsVisible={() => {
@@ -49,12 +53,20 @@ const About = () => {
         localStorage.setItem("visibleSection", "showAboutUs");
         setVisibleSection("showAboutUs");
       }
+      else{
+        localStorage.setItem("visibleSection", null);
+        setVisibleSection(localStorage.getItem("visibleSection"));
+      }
     }}/>
 
             <Section title={"About Me"} description={aboutMe} isVisible={visibleSection === "showAboutMe"}   setIsVisible={() => {
       if (visibleSection !== "showAboutMe") {
         localStorage.setItem("visibleSection", "showAboutMe");
         setVisibleSection("showAboutMe");
+      }
+      else{
+        localStorage.setItem("visibleSection", null);
+        setVisibleSection(localStorage.getItem("visibleSection"));
       }
     }}/>
 

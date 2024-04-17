@@ -32,7 +32,7 @@ const NavComponent = () =>{
             <div className="nav-items">
                 <ul className="items flex gap-8 text-white font-bold">
                     <Link key={"home"} to="/" >
-                        <li className={`transition-all duration-300 hover:text-myYellow underline-offset-8 decoration-2 ${currentTab === "home"? "text-myYellow underline" : "text-white no-underline"}`} onClick={() =>{
+                        <li className={`bg-gradient-to-r from-transparent to-myYellow border-b-0 bg-[length:0_3px] bg-[0_100%] bg-no-repeat transition-all duration-500 ease-in-out hover:bg-[length:100%_3px] opacity-80 hover:opacity-100 ${currentTab === "home"? "text-myYellow bg-[length:100%_3px] opacity-100" : "text-white "}`} onClick={() =>{
                                 currentTab === "home" ? null :
                                 localStorage.setItem("currentTab", "home")
                                 setCurrentTab(localStorage.getItem("currentTab"))
@@ -42,7 +42,7 @@ const NavComponent = () =>{
                     </Link>
 
                     <Link key={"about"} to="/about">
-                        <li className={`transition-all duration-300 hover:text-myYellow underline-offset-8 decoration-2 ${currentTab === "about" ? "text-myYellow underline": " text-white no-underline"}`} onClick={() =>{
+                        <li className={`bg-gradient-to-r from-transparent to-myYellow border-b-0 bg-[length:0_3px] bg-[0_100%] bg-no-repeat transition-all duration-500 ease-in-out hover:bg-[length:100%_3px]  opacity-80 hover:opacity-100  ${currentTab === "about" ? "text-myYellow bg-[length:100%_3px] opacity-100": " text-white "}`} onClick={() =>{
                                 currentTab === "about" ? null :
                                 localStorage.setItem("currentTab", "about")
                                 setCurrentTab(localStorage.getItem("currentTab"))
@@ -53,7 +53,7 @@ const NavComponent = () =>{
                     </Link>
 
                     <Link key={"contact"} to="/contact">
-                        <li className={`transition-all duration-300 hover:text-myYellow underline-offset-8 decoration-2  ${currentTab === "contact" ? "text-myYellow underline": "text-white no-underline"} `} onClick={() =>{
+                        <li className={`bg-gradient-to-r from-transparent to-myYellow border-b-0 bg-[length:0_3px] bg-[0_100%] bg-no-repeat transition-all duration-500 ease-in-out hover:bg-[length:100%_3px]  opacity-80 hover:opacity-100   ${currentTab === "contact" ? "text-myYellow bg-[length:100%_3px] opacity-100": "text-white "} `} onClick={() =>{
                                 currentTab === "contact" ? null :
                                 localStorage.setItem("currentTab", "contact")
                                 setCurrentTab(localStorage.getItem("currentTab"))
@@ -66,11 +66,11 @@ const NavComponent = () =>{
             </div>
 
             <div className="cart">
-                 <i className="fa-solid fa-cart-shopping transition-all duration-300 text-white cursor-pointer hover:text-myYellow"></i>
+                 <i className="fa-solid fa-cart-shopping transition-all ease-in-out duration-500 text-white cursor-pointer hover:text-myYellow"></i>
             </div>
 
             <div>
-            <button className="search-btn py-2 px-5  rounded-md bg-myYellow text-white hover:bg-myGray hover:text-myBlack transition-all duration-300 cursor-pointer font-bold text-sm tracking-widest" type="button" >Login</button>
+            <button className="search-btn py-2 px-5  rounded-md bg-myYellow text-white hover:bg-myGray hover:text-myBlack transition-all ease-in-out duration-500 cursor-pointer font-bold text-sm tracking-widest" type="button" >Login</button>
             </div>
 
         </div>
