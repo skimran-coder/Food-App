@@ -34,55 +34,18 @@ const Section = ({title, description, isVisible, setIsVisible}) =>{
 }
 
 const About = () => {
-  const [visibleSection, setVisibleSection] = useState({
-    "showFeature" : true,
-    "showAboutUs" : false,
-    "showAboutMe" : false
-  })
+  const [visibleSection, setVisibleSection] = useState("showFeature")
 
     return(
         <div className="w-3/5 m-auto my-4 min-h-full">
-            <Section title={"Features"} description={featuresDesc} isVisible={visibleSection.showFeature} setIsVisible={() => setVisibleSection(
-              visibleSection.showFeature === false ?
-              {
-              "showFeature" : true,
-              "showAboutUs" : false,
-              "showAboutMe" : false
-            }
-            :
-            {
-              "showFeature" : false,
-              "showAboutUs" : false,
-              "showAboutMe" : false
-            }
+            <Section title={"Features"} description={featuresDesc} isVisible={visibleSection === "showFeature"} setIsVisible={() => setVisibleSection(
+              visibleSection === "showFeature" ? !visibleSection : "showFeature"
           )}/>
-            <Section title={"About Us"} description={aboutUs} isVisible={visibleSection.showAboutUs} setIsVisible={() => setVisibleSection(
-              visibleSection.showAboutUs === false ?
-              {
-              "showFeature" : false,
-              "showAboutUs" : true,
-              "showAboutMe" : false
-            }
-            :
-            {
-              "showFeature" : false,
-              "showAboutUs" : false,
-              "showAboutMe" : false
-            }
+            <Section title={"About Us"} description={aboutUs} isVisible={visibleSection === "showAboutUs"}  setIsVisible={() => setVisibleSection(
+              visibleSection === "showAboutUs" ? !visibleSection : "showAboutUs"
           )}/>
-            <Section title={"About Me"} description={aboutMe} isVisible={visibleSection.showAboutMe} setIsVisible={() => setVisibleSection(
-              visibleSection.showAboutMe === false ?
-              {
-              "showFeature" : false,
-              "showAboutUs" : false,
-              "showAboutMe" : true
-            }
-            :
-            {
-              "showFeature" : false,
-              "showAboutUs" : false,
-              "showAboutMe" : false
-            }
+            <Section title={"About Me"} description={aboutMe} isVisible={visibleSection === "showAboutMe"}  setIsVisible={() => setVisibleSection(
+              visibleSection === "showAboutMe" ? !visibleSection : "showAboutMe"
           )}/>
 
             <Outlet />
