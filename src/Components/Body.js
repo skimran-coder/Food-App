@@ -9,6 +9,7 @@ import NoInternet from "./NoInternet";
 
 const Body = () =>{
     
+
     const [filteredRestaurants, setFilteredRestaurants] = useState(null)
     const restaurants = useRestaurant()
 
@@ -29,8 +30,6 @@ const Body = () =>{
             
             
             <SearchBar restaurants={restaurants} setFilteredRestaurants={setFilteredRestaurants}/>
-
-            
 
             <div className="cards  flex flex-wrap justify-between py-16 gap-x-8 gap-y-16 mx-auto w-[90%]">
                 {restaurants ? (

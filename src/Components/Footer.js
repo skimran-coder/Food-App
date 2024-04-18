@@ -1,9 +1,15 @@
+import { useContext } from "react";
+import userContext from "../utils/userContext";
+
+
 const Footer = () =>{
+    const {dev} = useContext(userContext)
+    
     return(
         <div className="footer px-20 w-[100%] text-center py-4  text-white bg-myBlack">
             <div class="footer-section flex justify-between w-3/4 mx-auto">
         <div class="footer-faded-text">
-            <h2 className="text-xl">© 2024 Sk. Imran Hussain</h2>
+            <h2 className="text-lg">Copyright © 2024 {dev.name} </h2>
         </div>
         <div class="footer-section-container flex gap-6 text-2xl ">
             
