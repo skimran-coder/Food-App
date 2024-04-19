@@ -36,7 +36,7 @@ const About = () => {
   const [visibleSection, setVisibleSection] = useState(localStorage ? localStorage.getItem('visibleSection') : "showFeature")
 
     return(
-        <div className="w-3/5 m-auto my-4 min-h-full">
+        <section className="w-3/5 m-auto my-4 min-h-full">
             <Section title={"Features"} description={featuresDesc} isVisible={visibleSection === "showFeature"}  setIsVisible={() => {
       if (visibleSection !== "showFeature") {
         localStorage.setItem("visibleSection", "showFeature");
@@ -72,7 +72,7 @@ const About = () => {
 
             
 
-        </div>
+        </section>
     )
 }
 

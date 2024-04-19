@@ -25,14 +25,14 @@ const AppLogo = () =>{
 
 const NavComponent = () =>{
     
-    const [currentTab, setCurrentTab] = useState(localStorage ? localStorage.getItem("currentTab") : "home")
+    const [currentTab, setCurrentTab] = useState(localStorage.getItem("currentTab") ? localStorage.getItem("currentTab") : "home")
 
     return(
-        <div className="navbar flex gap-8 text-xl items-center">
+        <nav className="navbar flex gap-8 text-xl items-center">
             <div className="nav-items">
                 <ul className="items flex gap-8 text-white font-bold">
                     <Link key={"home"} to="/" >
-                        <li className={`bg-gradient-to-r from-transparent to-myYellow border-b-0 bg-[length:0_3px] bg-[0_100%] bg-no-repeat transition-all duration-500 ease-in-out hover:bg-[length:100%_3px] opacity-80 hover:opacity-100 ${currentTab === "home"? "text-myYellow bg-[length:100%_3px] opacity-100" : "text-white "}`} onClick={() =>{
+                        <li className={`bg-gradient-to-r from-transparent to-myYellow border-b-0 bg-[length:0_3px] bg-[0_100%] bg-no-repeat transition-all duration-500 ease-in-out hover:bg-[length:100%_3px]  hover:opacity-100 ${currentTab === "home"? "text-myYellow bg-[length:100%_3px] opacity-100 " : "text-white opacity-80"}`} onClick={() =>{
                                 currentTab === "home" ? null :
                                 localStorage.setItem("currentTab", "home")
                                 setCurrentTab(localStorage.getItem("currentTab"))
@@ -42,7 +42,7 @@ const NavComponent = () =>{
                     </Link>
 
                     <Link key={"about"} to="/about">
-                        <li className={`bg-gradient-to-r from-transparent to-myYellow border-b-0 bg-[length:0_3px] bg-[0_100%] bg-no-repeat transition-all duration-500 ease-in-out hover:bg-[length:100%_3px]  opacity-80 hover:opacity-100  ${currentTab === "about" ? "text-myYellow bg-[length:100%_3px] opacity-100": " text-white "}`} onClick={() =>{
+                        <li className={`bg-gradient-to-r from-transparent to-myYellow border-b-0 bg-[length:0_3px] bg-[0_100%] bg-no-repeat transition-all duration-500 ease-in-out hover:bg-[length:100%_3px]   hover:opacity-100  ${currentTab === "about" ? "text-myYellow bg-[length:100%_3px] opacity-100": " text-white opacity-80"}`} onClick={() =>{
                                 currentTab === "about" ? null :
                                 localStorage.setItem("currentTab", "about")
                                 setCurrentTab(localStorage.getItem("currentTab"))
@@ -53,7 +53,7 @@ const NavComponent = () =>{
                     </Link>
 
                     <Link key={"contact"} to="/contact">
-                        <li className={`bg-gradient-to-r from-transparent to-myYellow border-b-0 bg-[length:0_3px] bg-[0_100%] bg-no-repeat transition-all duration-500 ease-in-out hover:bg-[length:100%_3px]  opacity-80 hover:opacity-100   ${currentTab === "contact" ? "text-myYellow bg-[length:100%_3px] opacity-100": "text-white "} `} onClick={() =>{
+                        <li className={`bg-gradient-to-r from-transparent to-myYellow border-b-0 bg-[length:0_3px] bg-[0_100%] bg-no-repeat transition-all duration-500 ease-in-out hover:bg-[length:100%_3px]   hover:opacity-100   ${currentTab === "contact" ? "text-myYellow bg-[length:100%_3px] opacity-100": "text-white opacity-80"} `} onClick={() =>{
                                 currentTab === "contact" ? null :
                                 localStorage.setItem("currentTab", "contact")
                                 setCurrentTab(localStorage.getItem("currentTab"))
@@ -73,19 +73,19 @@ const NavComponent = () =>{
             <button className="search-btn py-2 px-5  rounded-md bg-myYellow text-white hover:bg-myGray hover:text-myBlack transition-all ease-in-out duration-500 cursor-pointer font-bold text-sm tracking-widest" type="button" >Login</button>
             </div>
 
-        </div>
+        </nav>
     )
 }
 
 const Header = () =>{
     return(
-        <div className="header w-full h-24 flex justify-between flex-wrap px-20  items-center bg-myBlack">
+        <header className="header w-full h-24 flex justify-between flex-wrap px-20  items-center bg-myBlack">
 
                 <AppLogo />
                 <NavComponent/>
             
             
-        </div>
+        </header>
     )
 }
 

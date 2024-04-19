@@ -1,35 +1,23 @@
-import { useEffect, useState } from 'react';
-import {useParams} from 'react-router-dom'
 import { IMG_CDN_URL } from '../Constant';
-import Shimmer from './ShimmerUI';
 import MenuItems from './MenuItems';
 import star from '../../Public/asset/star.png'
+import useMenu from '../utils/useMenu';
 
 const Menu = () => {
-    const params = useParams()
-    const {resid} = params
+    const data = useMenu();
+    const restaurant = data?.cards[2]?.card?.card?.info
+    const restaurantMenu = data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card?.itemCards
 
-    const [restaurant, setRestaurant] = useState({})
-    const [restaurantMenu, setRestaurantMenu] = useState(null)
-
-    useEffect(() => {
-        getRestaurantMenu();
-    },[])
-
-    async function getRestaurantMenu(){
-        const data = await fetch(`https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=22.5327517&lng=88.376133&restaurantId=${resid}&catalog_qa=undefined&submitAction=ENTER`)
-        const json = await data.json()
-        setRestaurant(json?.data?.cards[2]?.card?.card?.info)
-        setRestaurantMenu(json?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card?.itemCards)
-    }
+    console.log(restaurant)
+    console.log(restaurantMenu)
 
     return (
         restaurantMenu ?
         
          (
-        <div className=' restaurant-menu w-3/5 mx-auto my-0  p-2 flex flex-col gap-8'>
+        <div className=' restaurant-menu w-3/5 mx-auto my-0  p-2 flex flex-col gap-8 '>
             
-            <div className='flex justify-between border-b-8 border-myYellow bg-myGray2 mt-2 p-4 rounded-md shadow-sm'>
+            <div className='flex justify-between border-b-8 border-myYellow mt-2 p-4 rounded-md shadow-lg bg-stone-200'>
             <div className='top py-4'>
                 
                 <h2 className='pl-2 font-serif text-xl'>{restaurant?.name}</h2>
@@ -51,7 +39,7 @@ const Menu = () => {
             
 
             </div>
-            <h2 className='font-bold font-serif text-xl p-4'>Menu</h2>
+            <h2 className='font-bold font-serif text-xl p-4 '>Menu</h2>
 
             <div className='bottom flex flex-col gap-4  p-4 shadow-sm' >
                 
@@ -67,10 +55,12 @@ const Menu = () => {
             </div>
         </div>
         ) : (
-            <Shimmer count={12}/>
+            <div>
+            Loading...
+            </div>
         )
     
-    )
+)
 }
 
 export default Menu

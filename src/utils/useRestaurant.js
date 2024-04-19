@@ -1,14 +1,14 @@
 import { useState, useEffect } from "react"
-import { FETCH_CARD_URL } from "../Constant"
+import { API_URL } from "../Constant"
 
 const useRestaurant = () => {
     const [restaurants, setRestaurants] = useState(null)
 
     async function getRestaurant(){
         try {
-            const data = await fetch (FETCH_CARD_URL)
+            const data = await fetch (API_URL)
             const json = await data.json()
-            setRestaurants(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
+            setRestaurants(json?.data)
             
         } catch (error) {
             console.log(error);

@@ -1,6 +1,6 @@
 export const IMG_CDN_URL = "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/"
 
-export const FETCH_CARD_URL = "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP_WEB_LISTING"
+export const API_URL = "https://www.swiggy.com/dapi/restaurants/list/v5?lat=22.51800&lng=88.38320&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
 
 export const aboutMe = "Meet the visionary behind FoodStore, Sk.Imran Hussain. With a passion for technology and a knack for innovation, Sk.Imran Hussain has meticulously crafted every aspect of the app, from concept to execution. With a keen eye for detail and a commitment to excellence, Sk.Imran Hussain has ensured that FoodStore delivers an unparalleled user experience, seamlessly blending functionality with aesthetics. As the driving force behind the app's success, Sk.Imran Hussain continues to push the boundaries of what's possible in the world of food delivery, making FoodStore the go-to choice for foodies everywhere."
 
