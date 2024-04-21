@@ -8,9 +8,6 @@ const Menu = () => {
     const restaurant = data?.cards[2]?.card?.card?.info
     const restaurantMenu = data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card?.itemCards
 
-    console.log(restaurant)
-    console.log(restaurantMenu)
-
     return (
         restaurantMenu ?
         

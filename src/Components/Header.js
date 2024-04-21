@@ -1,12 +1,11 @@
 import { Link } from "react-router-dom"
 import logo from '../../Public/asset/logo.png'
 import { useState } from "react";
+import { useSelector } from "react-redux";
 
 
 const AppLogo = () =>{
 
-    {console.log(process.env.PUBLIC_URL);
-    }
     return(
         
             <a href="/" className="app-info flex items-center gap-4">
@@ -26,6 +25,10 @@ const AppLogo = () =>{
 const NavComponent = () =>{
     
     const [currentTab, setCurrentTab] = useState(localStorage.getItem("currentTab") ? localStorage.getItem("currentTab") : "home")
+
+    const cartItems = useSelector(store => store.cart.items)
+
+    console.log(cartItems)
 
     return(
         <nav className="navbar flex gap-8 text-xl items-center">
@@ -65,9 +68,10 @@ const NavComponent = () =>{
                 </ul>
             </div>
 
-            <div className="cart">
+            <Link key={"cart"} to="/cart" className="cart relative">
                  <i className="fa-solid fa-cart-shopping transition-all ease-in-out duration-500 text-white cursor-pointer hover:text-myYellow"></i>
-            </div>
+                 <span className="text-white absolute text-center w-4 h-4 bottom-4 left-5  font-mono text-xs bg-myYellow rounded-full ">{cartItems.length}</span>
+            </Link>
 
             <div>
             <button className="search-btn py-2 px-5  rounded-md bg-myYellow text-white hover:bg-myGray hover:text-myBlack transition-all ease-in-out duration-500 cursor-pointer font-bold text-sm tracking-widest" type="button" >Login</button>

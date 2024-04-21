@@ -1,7 +1,7 @@
 import { IMG_CDN_URL } from "../Constant";
 import star from '../../Public/asset/star.png'
 
-const CardComponent = ({cloudinaryImageId, name, avgRating, cuisines}) => {
+const Card = ({cloudinaryImageId, name, avgRating, cuisines}) => {
 
     
     return (
@@ -21,4 +21,4 @@ const CardComponent = ({cloudinaryImageId, name, avgRating, cuisines}) => {
     )
 }
 
-export default CardComponent;
+export default Card;

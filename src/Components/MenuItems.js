@@ -1,6 +1,20 @@
+import { useDispatch } from "react-redux";
 import { IMG_CDN_URL } from "../Constant";
+import { addItem, removeItem } from "../utils/Redux/cartSlice";
 
 const MenuItems = ({restaurant}) => {
+    const restaurantId = restaurant?.card?.info?.id;
+
+    const dispatch = useDispatch()
+
+    const handleAddItem = (restaurant) =>{
+        dispatch(addItem(restaurant))
+    }
+
+    const handleRemoveItem = (restaurantId) => dispatch(removeItem(restaurantId))
+
+    
+
     return(
         <div className="flex justify-between pb-6 p-4 border-b-4  rounded-md border-myYellow mb-1 relative bg-stone-100 shadow-sm">
             <div>
@@ -11,18 +25,18 @@ const MenuItems = ({restaurant}) => {
             <img src={IMG_CDN_URL + restaurant?.card?.info?.imageId} className="w-32 aspect-square object-cover rounded-lg"/>
 
            
-                <div class="flex items-center bg-stone-200 gap-3 px-1  rounded-sm text-lg text-[#344151] absolute bottom-2 right-6">
+                <div className="flex items-center bg-stone-200 gap-3 px-1  rounded-sm text-lg text-[#344151] absolute bottom-2 right-6">
 
-                    <button class="border-r-2 pr-3 border-[#bfbfbf]">
-                        <i class="fa-solid fa-minus"></i>
+                    <button className="border-r-2 pr-3 border-[#bfbfbf]" onClick={() => handleRemoveItem(restaurantId)}>
+                        <i className="fa-solid fa-minus"></i>
                     </button>
 
-                    <div class="font-bold" id="count">
+                    <div className="font-bold" id="count">
                         0
                     </div>
 
-                    <button class="border-l-2 pl-3 border-[#bfbfbf]">
-                        <i class="fa-solid fa-plus"></i>
+                    <button className="border-l-2 pl-3 border-[#bfbfbf]" onClick={() => handleAddItem(restaurant)}>
+                        <i className="fa-solid fa-plus"></i>
                     </button>
 
                 </div>

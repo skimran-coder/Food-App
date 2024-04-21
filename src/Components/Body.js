@@ -1,4 +1,4 @@
-import CardComponent from "./Card";
+import Card from "./Card";
 import { useState } from "react";
 import Shimmer from "./ShimmerUI";
 import { Link } from "react-router-dom";
@@ -14,9 +14,10 @@ const Body = () =>{
     const [filteredRestaurants, setFilteredRestaurants] = useState(null)
 
     const data = useRestaurant()
-    console.log(data)
+    
     const restaurants = data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
     const categories = data?.cards[0]?.card?.card?.gridElements?.infoWithStyle?.info
+    
     
     const dataToRender = filteredRestaurants ? filteredRestaurants : restaurants;
 
@@ -27,8 +28,6 @@ const Body = () =>{
             <NoInternet />
         )
     } 
-
-    {console.log(categories)}
 
     
 
@@ -52,7 +51,7 @@ const Body = () =>{
             }
             </div>
 
-            <h2 className="mx-auto w-[90%] pt-8 font-bold text-2xl">
+            <h2 className="mx-auto w-[90%] pt-8 font-bold text-center text-2xl">
             Discover Kolkata's top restaurant chains!
             </h2>
 
@@ -61,7 +60,7 @@ const Body = () =>{
                 {restaurants ? (
                     dataToRender?.map((restaurant) => (
                     <Link to={"/restaurant/" + restaurant?.info?.id} key={restaurant?.info?.id} className="card-link">
-                        <CardComponent {...restaurant?.info} />
+                        <Card {...restaurant?.info} />
                     </Link>
                     ))
                 ) : (
