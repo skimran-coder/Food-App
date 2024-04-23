@@ -16,7 +16,7 @@ const Shimmer = ({ count }) => {
     );
   }
 
-  return <div id="shim-div" className="flex flex-wrap justify-start gap-y-16 gap-x-8 my-4 mx-auto">{shimmerElements}</div>;
+  return <div id="shim-div" className="grid grid-cols-4 w-11/12 col-span-4 gap-y-20 my-4 ">{shimmerElements}</div>;
 };
 
 export default Shimmer;

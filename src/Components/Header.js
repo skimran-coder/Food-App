@@ -1,6 +1,6 @@
-import { Link } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
 import logo from '../../Public/asset/logo.png'
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
 
@@ -24,7 +24,14 @@ const AppLogo = () =>{
 
 const NavComponent = () =>{
     
-    const [currentTab, setCurrentTab] = useState(localStorage.getItem("currentTab") ? localStorage.getItem("currentTab") : "home")
+    const location = useLocation();
+    const [currentTab, setCurrentTab] = useState("");
+
+    console.log(location)
+
+    useEffect(() => {
+        setCurrentTab(location.pathname.substr(1) || "home");
+    }, [location])
 
     const cartItems = useSelector(store => store.cart.items)
 
@@ -34,34 +41,21 @@ const NavComponent = () =>{
         <nav className="navbar flex gap-8 text-xl items-center">
             <div className="nav-items">
                 <ul className="items flex gap-8 text-white font-bold">
+                   
+
                     <Link key={"home"} to="/" >
-                        <li className={`bg-gradient-to-r from-transparent to-myYellow border-b-0 bg-[length:0_3px] bg-[0_100%] bg-no-repeat transition-all duration-500 ease-in-out hover:bg-[length:100%_3px]  hover:opacity-100 ${currentTab === "home"? "text-myYellow bg-[length:100%_3px] opacity-100 " : "text-white opacity-80"}`} onClick={() =>{
-                                currentTab === "home" ? null :
-                                localStorage.setItem("currentTab", "home")
-                                setCurrentTab(localStorage.getItem("currentTab"))
-                            
-                        }}>Home</li>
+                        <li className={`bg-gradient-to-r from-transparent to-myYellow border-b-0 bg-[length:0_3px] bg-[0_100%] bg-no-repeat transition-all duration-500 ease-in-out hover:bg-[length:100%_3px]  hover:opacity-100 ${currentTab === "home"? "text-myYellow bg-[length:100%_3px] opacity-100 " : "text-white opacity-80"}`} >Home</li>
                         
                     </Link>
 
                     <Link key={"about"} to="/about">
-                        <li className={`bg-gradient-to-r from-transparent to-myYellow border-b-0 bg-[length:0_3px] bg-[0_100%] bg-no-repeat transition-all duration-500 ease-in-out hover:bg-[length:100%_3px]   hover:opacity-100  ${currentTab === "about" ? "text-myYellow bg-[length:100%_3px] opacity-100": " text-white opacity-80"}`} onClick={() =>{
-                                currentTab === "about" ? null :
-                                localStorage.setItem("currentTab", "about")
-                                setCurrentTab(localStorage.getItem("currentTab"))
-                            
-                        }}>About</li>
+                        <li className={`bg-gradient-to-r from-transparent to-myYellow border-b-0 bg-[length:0_3px] bg-[0_100%] bg-no-repeat transition-all duration-500 ease-in-out hover:bg-[length:100%_3px]   hover:opacity-100  ${currentTab === "about" ? "text-myYellow bg-[length:100%_3px] opacity-100": " text-white opacity-80"}`} >About</li>
                         
 
                     </Link>
 
                     <Link key={"contact"} to="/contact">
-                        <li className={`bg-gradient-to-r from-transparent to-myYellow border-b-0 bg-[length:0_3px] bg-[0_100%] bg-no-repeat transition-all duration-500 ease-in-out hover:bg-[length:100%_3px]   hover:opacity-100   ${currentTab === "contact" ? "text-myYellow bg-[length:100%_3px] opacity-100": "text-white opacity-80"} `} onClick={() =>{
-                                currentTab === "contact" ? null :
-                                localStorage.setItem("currentTab", "contact")
-                                setCurrentTab(localStorage.getItem("currentTab"))
-                            
-                        }}>Contact</li>
+                        <li className={`bg-gradient-to-r from-transparent to-myYellow border-b-0 bg-[length:0_3px] bg-[0_100%] bg-no-repeat transition-all duration-500 ease-in-out hover:bg-[length:100%_3px]   hover:opacity-100   ${currentTab === "contact" ? "text-myYellow bg-[length:100%_3px] opacity-100": "text-white opacity-80"} `} >Contact</li>
                         
 
                     </Link>
@@ -69,7 +63,7 @@ const NavComponent = () =>{
             </div>
 
             <Link key={"cart"} to="/cart" className="cart relative">
-                 <i className="fa-solid fa-cart-shopping transition-all ease-in-out duration-500 text-white cursor-pointer hover:text-myYellow"></i>
+                 <i className={`fa-solid fa-cart-shopping transition-all ease-in-out duration-500 cursor-pointer hover:opacity-100 ${currentTab === "cart" ? "text-myYellow opacity-100": "text-white opacity-80"} `} ></i>
                  <span className="text-white absolute text-center w-4 h-4 bottom-4 left-5  font-mono text-xs bg-myYellow rounded-full ">{cartItems.length}</span>
             </Link>
 

@@ -34,28 +34,29 @@ const Body = () =>{
     return(
         
        <main className=" w-full ">
-             <div className="  w-[90%] mx-auto ">
-            
-            
             <SearchBar restaurants={restaurants} setFilteredRestaurants={setFilteredRestaurants}/>
-
-            <h3 className="mx-auto w-[90%] pt-8 font-bold text-2xl ">Hungry for ideas?</h3>
             
-            <div className="overflow-x-scroll flex mx-auto max-w-[90%] pt-8">
+            
+            <div className="w-10/12 mx-auto ">
+
+            <h3 className=" pt-8 font-bold text-2xl ">Hungry for ideas?</h3>
+            
+            <div className="overflow-x-scroll flex pt-8">
             {categories ? (
                 categories.map((category) => (
                     <Category {...category} key={category.id} />
                 )) 
-            ) :
+            ) : (
             <Shimmer/>
+            )
             }
             </div>
 
-            <h2 className="mx-auto w-[90%] pt-8 font-bold text-center text-2xl">
+            <h2 className="text-center pt-8 font-bold text-2xl">
             Discover Kolkata's top restaurant chains!
             </h2>
 
-            <div className="cards  flex flex-wrap justify-between py-8 gap-x-8 gap-y-16 mx-auto w-[90%]">
+            <div className="cards grid grid-cols-4 col-auto gap-y-20 pt-8 pb-16">
                 
                 {restaurants ? (
                     dataToRender?.map((restaurant) => (
@@ -65,11 +66,12 @@ const Body = () =>{
                     ))
                 ) : (
                     
-                    <Shimmer count={12}/>
+                    <Shimmer count={12} />
                 )}
             </div>
 
         </div>
+
        </main>
 
         

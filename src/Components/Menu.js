@@ -2,17 +2,20 @@ import { IMG_CDN_URL } from '../Constant';
 import MenuItems from './MenuItems';
 import star from '../../Public/asset/star.png'
 import useMenu from '../utils/useMenu';
+import Loader from './Loader';
 
 const Menu = () => {
     const data = useMenu();
     const restaurant = data?.cards[2]?.card?.card?.info
     const restaurantMenu = data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card?.itemCards
 
+    // data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card?.itemCards
+
     return (
         restaurantMenu ?
         
          (
-        <div className=' restaurant-menu w-3/5 mx-auto my-0  p-2 flex flex-col gap-8 '>
+        <div className=' restaurant-menu w-3/5 mx-auto my-0  p-2 flex flex-col gap-8 min-h-screen'>
             
             <div className='flex justify-between border-b-8 border-myYellow mt-2 p-4 rounded-md shadow-lg bg-stone-200'>
             <div className='top py-4'>
@@ -52,9 +55,7 @@ const Menu = () => {
             </div>
         </div>
         ) : (
-            <div>
-            Loading...
-            </div>
+            <Loader/>
         )
     
 )

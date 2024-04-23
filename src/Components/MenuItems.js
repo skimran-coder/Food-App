@@ -1,17 +1,25 @@
 import { useDispatch } from "react-redux";
 import { IMG_CDN_URL } from "../Constant";
 import { addItem, removeItem } from "../utils/Redux/cartSlice";
+import { useState } from "react";
 
 const MenuItems = ({restaurant}) => {
     const restaurantId = restaurant?.card?.info?.id;
+    const [count, setCount] = useState(0);
 
     const dispatch = useDispatch()
 
     const handleAddItem = (restaurant) =>{
         dispatch(addItem(restaurant))
+        setCount(count + 1)
     }
 
-    const handleRemoveItem = (restaurantId) => dispatch(removeItem(restaurantId))
+    const handleRemoveItem = (restaurantId) => {
+        dispatch(removeItem(restaurantId) )
+        if(count !== 0) {
+            setCount(count - 1)
+        }
+    }
 
     
 
@@ -32,7 +40,7 @@ const MenuItems = ({restaurant}) => {
                     </button>
 
                     <div className="font-bold" id="count">
-                        0
+                        {count}
                     </div>
 
                     <button className="border-l-2 pl-3 border-[#bfbfbf]" onClick={() => handleAddItem(restaurant)}>
