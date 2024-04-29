@@ -3,7 +3,6 @@ import { useState } from "react";
 import Shimmer from "./ShimmerUI";
 import { Link } from "react-router-dom";
 import useRestaurant from "../utils/useRestaurant";
-import SearchBar from "./SearchBar";
 import useOnline from "../utils/useOnline";
 import NoInternet from "./NoInternet";
 import Category from "./Category";
@@ -15,11 +14,13 @@ const Body = () =>{
 
     const data = useRestaurant()
     
-    const restaurants = data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
     const categories = data?.cards[0]?.card?.card?.gridElements?.infoWithStyle?.info
+    const restaurants = data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
+    const restaurantList = data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
+    console.log(restaurants)
     
     
-    const dataToRender = filteredRestaurants ? filteredRestaurants : restaurants;
+    // const dataToRender = filteredRestaurants ? filteredRestaurants : restaurants;
 
     const isOnline = useOnline()
 
@@ -34,12 +35,11 @@ const Body = () =>{
     return(
         
        <main className=" w-full ">
-            <SearchBar restaurants={restaurants} setFilteredRestaurants={setFilteredRestaurants}/>
             
             
             <div className="w-10/12 mx-auto ">
 
-            <h3 className=" pt-8 font-bold text-2xl ">Hungry for ideas?</h3>
+            <h3 className=" pt-8 font-bold text-2xl font-Grotesk">Hungry for ideas?</h3>
             
             <div className="overflow-x-scroll flex pt-8">
             {categories ? (
@@ -52,14 +52,26 @@ const Body = () =>{
             }
             </div>
 
-            <h2 className="text-center pt-8 font-bold text-2xl">
+            <h2 className=" font-Grotesk pt-8 font-bold text-2xl">
             Discover Kolkata's top restaurant chains!
             </h2>
+        
+            <div className="flex gap-8 overflow-x-auto pt-8 pb-16">
+            {restaurantList?.map((restaurant) => (
+                    <Link to={"/restaurant/" + restaurant?.info?.id} key={restaurant?.info?.id} className="card-link">
+                        <Card {...restaurant?.info} />
+                    </Link>
+                    ))}
+            </div>
 
-            <div className="cards grid grid-cols-4 col-auto gap-y-20 pt-8 pb-16">
+            <h2 className="text-center font-Grotesk pt-8 font-bold text-2xl">
+            Restaurants with online food delivery in Kolkata
+            </h2>
+
+            <div className="resCards  grid gap-y-20 pt-8 pb-16">
                 
                 {restaurants ? (
-                    dataToRender?.map((restaurant) => (
+                    restaurants?.map((restaurant) => (
                     <Link to={"/restaurant/" + restaurant?.info?.id} key={restaurant?.info?.id} className="card-link">
                         <Card {...restaurant?.info} />
                     </Link>

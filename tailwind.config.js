@@ -11,6 +11,10 @@ module.exports = {
         'myYellow': '#F7B614',
         'myGray2': '#f5f4f0',
       },
+      fontFamily: {
+        "Helvetica": "Helvetica, sans-serif, Arial",
+        "Grotesk": "Familjen Grotesk, sans-serif",
+      },
     },
   },
   plugins: [],

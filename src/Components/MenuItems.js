@@ -2,10 +2,14 @@ import { useDispatch } from "react-redux";
 import { IMG_CDN_URL } from "../Constant";
 import { addItem, removeItem } from "../utils/Redux/cartSlice";
 import { useState } from "react";
+import { starIcon2 } from "../Constant";
 
 const MenuItems = ({restaurant}) => {
+
     const restaurantId = restaurant?.card?.info?.id;
     const [count, setCount] = useState(0);
+    const items = restaurant?.card?.card?.itemCards;
+    console.log(items)
 
     const dispatch = useDispatch()
 
@@ -23,12 +27,21 @@ const MenuItems = ({restaurant}) => {
 
     
 
+    
+
     return(
-        <div className="flex justify-between pb-6 p-4 border-b-4  rounded-md border-myYellow mb-1 relative bg-stone-100 shadow-sm">
+        items && items.map((restaurant) =>(
+            <div key={restaurant?.card?.info?.id} className="flex justify-between pb-6 border-b-4 border-myYellow mb-1 relative bg-white shadow-sm">
             <div>
-                <h2 className="text-base">{restaurant?.card?.info?.name}</h2>
-                <h3 className="text-green-800 leading-6 text-sm">{"₹" + restaurant?.card?.info?.price /100}</h3>
-                <h4 className="text-xs py-4 pr-8 text-justify opacity-75">{restaurant?.card?.info?.description}</h4>
+
+                <h2 className="text-lg">{restaurant?.card?.info?.name}</h2>
+                <h3 className=" leading-6 ">{"₹" + restaurant?.card?.info?.price /100}</h3>
+                <span className="flex items-center text-green-800 text-sm">
+                {starIcon2}
+                <h4 className="pl-1 ">{restaurant?.card?.info?.ratings?.aggregatedRating?.rating}</h4>
+                <h4 className="pl-1 ">({restaurant?.card?.info?.ratings?.aggregatedRating?.ratingCountV2})</h4>
+            </span>
+                <h4 className="text-sm pb-4 pt-2 pr-8 text-justify opacity-75">{restaurant?.card?.info?.description}</h4>
             </div>
             <img src={IMG_CDN_URL + restaurant?.card?.info?.imageId} className="w-32 aspect-square object-cover rounded-lg"/>
 
@@ -50,6 +63,7 @@ const MenuItems = ({restaurant}) => {
                 </div>
            
         </div>
+        ) )
     )
 }
 

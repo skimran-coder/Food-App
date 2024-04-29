@@ -19,8 +19,23 @@ body{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Helvetica, sans-serif, Arial;
+    font-family: "Familjen Grotesk", sans-serif;
     width: 100vw;
     height: 100vh;
     overflow-x: hidden;
 }
+
+.resCards{
+    grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+    column-gap: 2rem;
+}
+
+/* <uniquifier>: Use a unique and descriptive class name
+<weight>: Use a value from 400 to 700 */
+
+/* .familjen-grotesk-swiggy {
+  font-family: "Familjen Grotesk", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+} */

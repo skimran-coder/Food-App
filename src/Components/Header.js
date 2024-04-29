@@ -27,7 +27,7 @@ const NavComponent = () =>{
     const location = useLocation();
     const [currentTab, setCurrentTab] = useState("");
 
-    console.log(location)
+    // console.log(location)
 
     useEffect(() => {
         setCurrentTab(location.pathname.substr(1) || "home");
@@ -35,7 +35,7 @@ const NavComponent = () =>{
 
     const cartItems = useSelector(store => store.cart.items)
 
-    console.log(cartItems)
+    // console.log(cartItems)
 
     return(
         <nav className="navbar flex gap-8 text-xl items-center">

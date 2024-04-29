@@ -6,19 +6,15 @@ const Section = ({title, description, isVisible, setIsVisible}) =>{
 
    return (
    <div className="my-4">
-    <div className={`flex justify-between items-center bg-stone-700 pl-4 rounded-t-md  ${!isVisible ? "border-b-4 border-myYellow" : "border-none"}`}>
-        <h2 className={`text-2xl font-bold py-1 font-serif cursor-pointer transition-all duration-300 ${isVisible ? "text-white" : "text-stone-300"}`} onClick={() =>{
+    <div className={`flex justify-between items-center bg-stone-700 pl-4 rounded-t-md cursor-pointer  ${!isVisible ? "border-b-4 border-myYellow" : "border-none"}`} onClick={() =>{
             setIsVisible()
-          }}>{title}</h2>
+          }}>
+        <h2 className={`text-2xl font-bold py-1 font-serif  transition-all duration-300 ${isVisible ? "text-white" : "text-stone-300"}`} >{title}</h2>
         {
           !isVisible ?  
-          <i className={`fa-solid fa-angle-down text-2xl pr-4 cursor-pointer transition-all duration-300 ${isVisible ? "text-white" : "text-stone-300"}`} onClick={() =>{
-            setIsVisible()
-          }}></i> 
+          <i className={`fa-solid fa-angle-down text-2xl pr-4  transition-all duration-300 ${isVisible ? "text-white" : "text-stone-300"}`} ></i> 
           :
-          <i className={`fa-solid fa-angle-up text-2xl pr-4 cursor-pointer transition-all duration-300 ${isVisible ? "text-white" : "text-stone-300"}`} onClick={() =>{
-            setIsVisible()
-          }}></i>
+          <i className={`fa-solid fa-angle-up text-2xl pr-4  transition-all duration-300 ${isVisible ? "text-white" : "text-stone-300"}`} ></i>
         } 
     </div>
     <div className={`bg-stone-600 rounded-b-md ${isVisible ? "border-b-8 border-myYellow" : "border-none"}`}>

@@ -16,6 +16,7 @@ const useMenu = () => {
 
         const json = await data.json()
         setRestaurant(json?.data)
+        // console.log(json)
     }
 
     useEffect(() => {
