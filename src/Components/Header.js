@@ -3,7 +3,6 @@ import logo from '../../Public/asset/logo.png'
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
-
 const AppLogo = () =>{
 
     return(
@@ -42,6 +41,12 @@ const NavComponent = () =>{
             <div className="nav-items">
                 <ul className="items flex gap-8 text-white font-bold">
                    
+
+                    <Link key={"search"} to="/search" >
+                        <li className={`bg-gradient-to-r from-transparent to-myYellow border-b-0 bg-[length:0_3px] bg-[0_100%] bg-no-repeat transition-all duration-500 ease-in-out hover:bg-[length:100%_3px]  hover:opacity-100 ${currentTab === "search"? "text-myYellow bg-[length:100%_3px] opacity-100 " : "text-white opacity-80"}`} > Search </li>
+                        
+                    </Link>
+
 
                     <Link key={"home"} to="/" >
                         <li className={`bg-gradient-to-r from-transparent to-myYellow border-b-0 bg-[length:0_3px] bg-[0_100%] bg-no-repeat transition-all duration-500 ease-in-out hover:bg-[length:100%_3px]  hover:opacity-100 ${currentTab === "home"? "text-myYellow bg-[length:100%_3px] opacity-100 " : "text-white opacity-80"}`} >Home</li>

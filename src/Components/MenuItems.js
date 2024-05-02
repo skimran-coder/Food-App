@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { IMG_CDN_URL } from "../Constant";
+import { IMG_CDN_URL, nonVegIcon, vegIcon } from "../Constant";
 import { addItem, removeItem } from "../utils/Redux/cartSlice";
 import { useState } from "react";
 import { starIcon2 } from "../Constant";
@@ -9,7 +9,14 @@ const MenuItems = ({restaurant}) => {
     const restaurantId = restaurant?.card?.info?.id;
     const [count, setCount] = useState(0);
     const items = restaurant?.card?.card?.itemCards;
-    console.log(items)
+    // console.log(items)
+
+    const [showMore, setShowMore] = useState([])
+
+    const handleClickMore = (id) =>{
+
+        setShowMore(id)
+    }
 
     const dispatch = useDispatch()
 
@@ -31,19 +38,27 @@ const MenuItems = ({restaurant}) => {
 
     return(
         items && items.map((restaurant) =>(
-            <div key={restaurant?.card?.info?.id} className="flex justify-between pb-6 border-b-4 border-myYellow mb-1 relative bg-white shadow-sm">
+            <div key={restaurant?.card?.info?.id} className="flex justify-between pb-6 border-b-4 border-myYellow mb-4 pt-2 relative rounded-sm  h-60  bg-white shadow-sm">
             <div>
-
+                {
+                    restaurant?.card?.info?.itemAttribute?.vegClassifier === "NONVEG" ? nonVegIcon : vegIcon
+                }
                 <h2 className="text-lg">{restaurant?.card?.info?.name}</h2>
-                <h3 className=" leading-6 ">{"₹" + restaurant?.card?.info?.price /100}</h3>
-                <span className="flex items-center text-green-800 text-sm">
-                {starIcon2}
-                <h4 className="pl-1 ">{restaurant?.card?.info?.ratings?.aggregatedRating?.rating}</h4>
-                <h4 className="pl-1 ">({restaurant?.card?.info?.ratings?.aggregatedRating?.ratingCountV2})</h4>
-            </span>
-                <h4 className="text-sm pb-4 pt-2 pr-8 text-justify opacity-75">{restaurant?.card?.info?.description}</h4>
+                <h3 className=" leading-6 ">{ restaurant?.card?.info?.price /100 ? "₹" + restaurant?.card?.info?.price /100 : "₹" + restaurant?.card?.info?.defaultPrice /100}</h3>
+                {
+                    restaurant?.card?.info?.ratings?.aggregatedRating?.rating ? (
+                        <span className="flex items-center text-green-800 text-sm">
+                            {starIcon2}
+                            <h4 className="pl-1 ">{restaurant?.card?.info?.ratings?.aggregatedRating?.rating}</h4>
+                            <h4 className="pl-1 ">({restaurant?.card?.info?.ratings?.aggregatedRating?.ratingCountV2})</h4>
+                        </span>
+                    ) : (null)
+                }
+                <h4 className="text-base pb-4 pt-2 pr-8 text-justify opacity-75 overflow-y-hidden">{showMore === restaurant?.card?.info?.id ? restaurant?.card?.info?.description : restaurant?.card?.info?.description?.substring(0, 169)} {showMore !== restaurant?.card?.info?.id && restaurant?.card?.info?.description?.length > 169 ? (<span onClick={() => {
+                    handleClickMore(restaurant?.card?.info?.id)
+                }}>...more</span>) : (null)} </h4>
             </div>
-            <img src={IMG_CDN_URL + restaurant?.card?.info?.imageId} className="w-32 aspect-square object-cover rounded-lg"/>
+            <img src={IMG_CDN_URL + restaurant?.card?.info?.imageId} className="w-48 h-48 aspect-square object-cover rounded-lg"/>
 
            
                 <div className="flex items-center bg-stone-200 gap-3 px-1  rounded-sm text-lg text-[#344151] absolute bottom-2 right-6">

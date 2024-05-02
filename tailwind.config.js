@@ -10,6 +10,7 @@ module.exports = {
         'myGray': '#F2EFE6',
         'myYellow': '#F7B614',
         'myGray2': '#f5f4f0',
+        'Gainsboro': '#e2e2e7'
       },
       fontFamily: {
         "Helvetica": "Helvetica, sans-serif, Arial",

@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from "react";
+import React from "react";
 import ReactDOM  from "react-dom/client";
 import Header from "./Components/Header";
 import Body from "./Components/Body";
@@ -11,6 +11,7 @@ import { RouterProvider, createBrowserRouter, Outlet } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./utils/Redux/store";
 import Cart from "./Components/Cart";
+import SearchBar from "./Components/SearchBar";
 
 
 
@@ -51,6 +52,10 @@ const appRouter = createBrowserRouter([
             {
                 path: "/restaurant/:resid",
                 element: <Menu />
+            },
+            {
+                path: "/search",
+                element: <SearchBar />
             }
         ]
     },

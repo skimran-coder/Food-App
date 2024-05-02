@@ -1,23 +1,21 @@
 import Card from "./Card";
-import { useState } from "react";
 import Shimmer from "./ShimmerUI";
 import { Link } from "react-router-dom";
 import useRestaurant from "../utils/useRestaurant";
 import useOnline from "../utils/useOnline";
 import NoInternet from "./NoInternet";
 import Category from "./Category";
+import ScrollX from "./ScrollX";
 
 const Body = () =>{
     
-
-    const [filteredRestaurants, setFilteredRestaurants] = useState(null)
 
     const data = useRestaurant()
     
     const categories = data?.cards[0]?.card?.card?.gridElements?.infoWithStyle?.info
     const restaurants = data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
     const restaurantList = data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
-    console.log(restaurants)
+    // console.log(restaurants)
     
     
     // const dataToRender = filteredRestaurants ? filteredRestaurants : restaurants;
@@ -39,22 +37,26 @@ const Body = () =>{
             
             <div className="w-10/12 mx-auto ">
 
-            <h3 className=" pt-8 font-bold text-2xl font-Grotesk">Hungry for ideas?</h3>
-            
-            <div className="overflow-x-scroll flex pt-8">
-            {categories ? (
+            <div className="flex justify-between items-center">
+                <h3 className=" pt-8 font-bold text-2xl font-Grotesk">Hungry for ideas?</h3>
+                <ScrollX />
+            </div>
+
+            <div className="overflow-x-scroll flex gap-4 pt-8">
+            {categories && (
                 categories.map((category) => (
                     <Category {...category} key={category.id} />
                 )) 
-            ) : (
-            <Shimmer/>
-            )
+            ) 
             }
             </div>
 
-            <h2 className=" font-Grotesk pt-8 font-bold text-2xl">
-            Discover Kolkata's top restaurant chains!
-            </h2>
+            <div className="flex justify-between items-center">
+                <h2 className=" font-Grotesk pt-8 font-bold text-2xl">
+                Discover Kolkata's top restaurant chains!
+                </h2>
+                <ScrollX />
+            </div>
         
             <div className="flex gap-8 overflow-x-auto pt-8 pb-16">
             {restaurantList?.map((restaurant) => (
