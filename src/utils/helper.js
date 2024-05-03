@@ -1,8 +1,10 @@
-
-
-export function filterCards(searchInput, restaurants){
-    const filteredData = restaurants?.filter((restaurant) => {
-       return restaurant?.info?.name?.toLowerCase().includes(searchInput.toLowerCase())
-    })
-    return filteredData;
+export function filterHandler(e, setFilterState){
+    if (e.target.value.toLowerCase() === "ratings 4.0+") {
+        setFilterState("ratings 4.0+")
+    } else if (e.target.value.toLowerCase() === "fast delivery"){
+        setFilterState("fast delivery")
+    }
+    else{
+        setFilterState("all")
+    }
 }

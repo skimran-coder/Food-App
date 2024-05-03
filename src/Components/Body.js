@@ -6,6 +6,9 @@ import useOnline from "../utils/useOnline";
 import NoInternet from "./NoInternet";
 import Category from "./Category";
 import ScrollX from "./ScrollX";
+import { useState } from "react";
+import { filterHandler } from "../utils/helper";
+import useFilterRestaurant from "../utils/useFilterRestaurant";
 
 const Body = () =>{
     
@@ -15,10 +18,15 @@ const Body = () =>{
     const categories = data?.cards[0]?.card?.card?.gridElements?.infoWithStyle?.info
     const restaurants = data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
     const restaurantList = data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
-    // console.log(restaurants)
+
+    const [filterState, setFilterState] = useState("all")
+
+    const filteredData = useFilterRestaurant(restaurants, filterState)
+
     
     
-    // const dataToRender = filteredRestaurants ? filteredRestaurants : restaurants;
+    
+    const dataToRender = filteredData ? filteredData : restaurants;
 
     const isOnline = useOnline()
 
@@ -70,10 +78,20 @@ const Body = () =>{
             Restaurants with online food delivery in Kolkata
             </h2>
 
+            <div className="mt-4 ml-16 flex gap-4">
+
+                <button className={`bg-transparent border py-1 px-6 rounded-full ${filterState === "all" && "bg-gray-200 border-black"}`} value={"all"} onClick={(e) => filterHandler(e, setFilterState)}>All</button>
+
+                <button className={`bg-transparent border py-1 px-6 rounded-full ${filterState === "fast delivery" && "bg-gray-200 border-black"}`} value={"fast delivery"} onClick={(e) => filterHandler(e, setFilterState)}>Fast Delivery</button>
+
+                <button className={`bg-transparent border py-1 px-6 rounded-full ${filterState === "ratings 4.0+" && "bg-gray-200 border-black"}`} value={"ratings 4.0+"} onClick={(e) => filterHandler(e, setFilterState)}>Ratings 4.0+</button>
+
+            </div>
+
             <div className="resCards  grid gap-y-20 pt-8 pb-16">
                 
                 {restaurants ? (
-                    restaurants?.map((restaurant) => (
+                    dataToRender?.map((restaurant) => (
                     <Link to={"/restaurant/" + restaurant?.info?.id} key={restaurant?.info?.id} className="card-link">
                         <Card {...restaurant?.info} />
                     </Link>

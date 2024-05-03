@@ -10,9 +10,11 @@ const SearchBar = () => {
     const data = useLanding()
     const cards = data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.info
     const title = data?.cards[1]?.card?.card?.header?.title
+    console.log(cards)
 
     const searchResult = useSearch(searchInput);
     const suggestedItems = searchResult?.data?.suggestions
+    console.log(suggestedItems)
     
 
     return(
@@ -40,7 +42,7 @@ const SearchBar = () => {
                         {
                             cards &&
                             cards.map((card) =>  {
-                            return <div className="flex-shrink-0 w-24 ">
+                            return <div className="flex-shrink-0 w-24 " key={card.id}>
                                 <img src={IMG_CDN_URL + card?.imageId} className="w-full h-auto">
                                 </img>
                             </div>
@@ -53,7 +55,7 @@ const SearchBar = () => {
                     {
                         suggestedItems && 
                         suggestedItems.map((item) => {
-                            return <div className=" flex gap-4 items-center p-3">
+                            return <div className=" flex gap-4 items-center p-3" key={item?.cloudinaryId}>
                                 <div>
                                 <img src={IMG_CDN_URL + item?.cloudinaryId} className="w-16 h-16 rounded-sm object-cover aspect-square"></img>
                                 </div>
