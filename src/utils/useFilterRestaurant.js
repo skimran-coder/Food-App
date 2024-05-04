@@ -11,6 +11,9 @@ const useFilterRestaurant = (restaurants, filterState) => {
         } else if (filterState === "fast delivery"){
             const data = restaurants?.filter((restaurant) => restaurant?.info?.sla?.deliveryTime <= 30)
             setFilteredData(data)
+        } else if (filterState === "offers") {
+            const data = restaurants?.filter((restaurant) => restaurant?.info?.aggregatedDiscountInfoV3?.header)
+            setFilteredData(data)
         }
         else{
             setFilteredData(restaurants)

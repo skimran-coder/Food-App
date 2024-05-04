@@ -22,9 +22,6 @@ const Body = () =>{
     const [filterState, setFilterState] = useState("all")
 
     const filteredData = useFilterRestaurant(restaurants, filterState)
-
-    
-    
     
     const dataToRender = filteredData ? filteredData : restaurants;
 
@@ -85,6 +82,8 @@ const Body = () =>{
                 <button className={`bg-transparent border py-1 px-6 rounded-full ${filterState === "fast delivery" && "bg-gray-200 border-black"}`} value={"fast delivery"} onClick={(e) => filterHandler(e, setFilterState)}>Fast Delivery</button>
 
                 <button className={`bg-transparent border py-1 px-6 rounded-full ${filterState === "ratings 4.0+" && "bg-gray-200 border-black"}`} value={"ratings 4.0+"} onClick={(e) => filterHandler(e, setFilterState)}>Ratings 4.0+</button>
+
+                <button className={`bg-transparent border py-1 px-6 rounded-full ${filterState === "offers" && "bg-gray-200 border-black"}`} value={"offers"} onClick={(e) => filterHandler(e, setFilterState)}>Offers</button>
 
             </div>
 
