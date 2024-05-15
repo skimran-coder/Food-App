@@ -3,9 +3,13 @@ export const IMG_CDN_URL = "https://media-assets.swiggy.com/swiggy/image/upload/
 
 export const API_URL = "https://www.swiggy.com/dapi/restaurants/list/v5?lat=22.51800&lng=88.38320&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
 
+// export const API_URL = "https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.7041&lng=77.1025&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+
 export const LANDING_API_URL ="https://www.swiggy.com/dapi/landing/PRE_SEARCH?lat=22.51800&lng=88.38320"
 
 export const TOP_PICKS_CDN_URL = "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_292,h_300/"
+
+export const Empty_IMG = "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/2xempty_cart_yfxml0"
 
 export const Left_SVG = <svg aria-hidden="true" height="16" width="16" class="sc-iGgWBj kDDZoM"><path d="M7.469 3.434a.8.8 0 0 1 1.091 1.17L5.084 7.848l-.37.347h10.38a.8.8 0 0 1 0 1.6H4.667c.12.114.257.244.417.393l3.434 3.204a.8.8 0 1 1-1.092 1.17l-3.471-3.24c-.409-.38-.773-.721-1.029-1.035-.277-.341-.51-.75-.51-1.27s.233-.927.51-1.269c.256-.314.62-.654 1.029-1.035l3.514-3.28Z" fill="var(--fill-color)" fill-opacity=".92"></path></svg>
 

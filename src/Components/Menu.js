@@ -71,7 +71,7 @@ const Menu = () => {
             <div className='carousels-container flex overflow-x-auto gap-6'>
                 {
                     carousels &&
-                    carousels.map((carousel) => <ResMenuCarousel {...carousel}/>)
+                    carousels.map((carousel) => <ResMenuCarousel carousel={carousel}/>)
                 }
             </div>
             

@@ -25,6 +25,8 @@ const Body = () =>{
     
     const dataToRender = filteredData ? filteredData : restaurants;
 
+    console.log(restaurants)
+
     const isOnline = useOnline()
 
     if (isOnline) {

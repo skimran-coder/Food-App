@@ -34,10 +34,10 @@ const NavComponent = () =>{
 
     const cartItems = useSelector(store => store.cart.items)
 
-    // console.log(cartItems)
+    
 
     return(
-        <nav className="navbar flex gap-8 text-xl items-center">
+        <nav className="navbar  gap-8 text-xl items-center hidden md:flex ">
             <div className="nav-items">
                 <ul className="items flex gap-8 text-white font-bold">
                    
@@ -81,11 +81,18 @@ const NavComponent = () =>{
 }
 
 const Header = () =>{
+    const [isOpen, setIsOpen] = useState(false)
+
+    const toggleIsOpen = () => setIsOpen(!isOpen)
+
     return(
         <header className="header w-full h-24 flex justify-between flex-wrap px-20  items-center bg-myBlack">
 
                 <AppLogo />
-                <NavComponent/>
+                <div className="md:hidden sm:flex">
+                     <i className="fa fa-bars text-white" aria-hidden="true" onClick={toggleIsOpen}></i>
+                </div>
+                <NavComponent isOpen={isOpen}/>
             
             
         </header>
