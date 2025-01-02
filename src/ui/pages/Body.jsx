@@ -10,10 +10,12 @@ import { filterHandler } from "../../utils/helper";
 import useFilterRestaurant from "../../utils/hooks/useFilterRestaurant";
 import ScrollX from "../components/ScrollX";
 import usePosition from "../../utils/hooks/usePosition";
+import { useSelector } from "react-redux";
 
 const Body = () => {
   usePosition();
-  const data = useRestaurant();
+  const location = useSelector((store) => store.location);
+  const data = useRestaurant(location);
 
   const categories =
     data?.cards[0]?.card?.card?.gridElements?.infoWithStyle?.info;
@@ -53,10 +55,12 @@ const Body = () => {
 
         <div className="flex justify-between items-center">
           <h2 className=" font-Grotesk pt-8 font-bold text-2xl">
-            Discover Kolkata's top restaurant chains!
+            Discover {location.addressStr.split(",")[0]}'s top restaurant chains!
           </h2>
           <ScrollX />
         </div>
+
+{console.log(restaurantList)}
 
         <div className="flex gap-8 overflow-x-auto pt-8 pb-16">
           {restaurantList?.map((restaurant) => (
@@ -71,7 +75,7 @@ const Body = () => {
         </div>
 
         <h2 className="text-center font-Grotesk pt-8 font-bold text-2xl">
-          Restaurants with online food delivery in Kolkata
+          Restaurants with online food delivery in {location.addressStr.split(",")[0]}
         </h2>
 
         <div className="mt-4 ml-16 flex gap-4">
@@ -116,7 +120,7 @@ const Body = () => {
           </button>
         </div>
 
-        <div className="resCards  grid gap-y-20 pt-8 pb-16">
+        <div className="resCards  grid gap-y-8 pt-8 pb-16">
           {restaurants ? (
             dataToRender?.map((restaurant) => (
               <Link

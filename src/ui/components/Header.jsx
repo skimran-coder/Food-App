@@ -1,26 +1,98 @@
 import { Link, useLocation } from "react-router-dom";
 import logo from "../../assets/logo.png";
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import usePlaceSuggestion from "../../utils/hooks/usePlaceSuggestion";
+import { addAddress, addCoords } from "../../utils/Redux/locationSlice";
 
-function LocationBar({ isLocationBarVisible, toggleLocationBar }) {
+function LocationBar({ isLocationBarVisible, toggleLocationBar, dispatch }) {
+  const [searchInput, setSearchInput] = useState();
+
+  const searchResult = usePlaceSuggestion(searchInput);
+
+  async function getLocation(id) {
+    const response = await fetch(
+      `${import.meta.env.VITE_BACKEND_URL}address/?id=${id}`
+    );
+
+    const data = await response.json();
+    const lat = data.data[0].geometry.location.lat;
+    const lng = data.data[0].geometry.location.lng;
+
+    localStorage.setItem("lat", lat);
+    localStorage.setItem("lng", lng);
+    localStorage.setItem("address", data.data[0].formatted_address);
+    dispatch(addCoords({ latitude: lat, longitude: lng }));
+    dispatch(addAddress(data.data[0].formatted_address));
+    toggleLocationBar();
+  }
+
   return (
-    <div
-      className={`${
-        !isLocationBarVisible ? "-left-[100%] " : "  left-0 "
-      } bg-white text-myGray top-0 fixed h-full w-1/4 z-50 transition-all duration-150 ease-in-out`}
-    >
-      <div>
-        <i
-          className="fa-solid fa-xmark text-myBlack text-3xl p-4"
-          onClick={toggleLocationBar}
-        ></i>
+    <div className={`${isLocationBarVisible ? "fixed" : "hidden"} z-40`}>
+      <div
+        className={`fixed bg-black bg-opacity-20 top-0 bottom-0 left-0 right-0 z-30`}
+      ></div>
+
+      <div
+        className={`${
+          !isLocationBarVisible ? "-left-[100%] " : "  left-0 "
+        } bg-white text-myGray top-0 fixed h-full w-full sm:w-3/4 md:w-1/2 lg:w-1/4  transition-all duration-150 ease-in-out pl-8 z-40`}
+      >
+        <div className="z-40">
+          <i
+            className="fa-solid fa-xmark  text-black opacity-70 text-2xl p-4 cursor-pointer"
+            onClick={toggleLocationBar}
+          ></i>
+
+          <div className="mx-4 mt-4 flex flex-col gap-8">
+            <input
+              className="p-4 focus:shadow-lg text-black outline-none border w-full"
+              placeholder="Search for area, street name.."
+              onChange={(e) => setSearchInput(e.target.value)}
+            ></input>
+
+            {!searchInput && (
+              <div className="text-gray-700 flex flex-col border p-4 cursor-pointer">
+                <div className="flex items-center gap-2">
+                  <i className="fa-solid fa-location-crosshairs text-2xl opacity-70"></i>
+                  <h4 className="font-bold hover:text-myYellow transition-colors">
+                    Get current location
+                  </h4>
+                </div>
+                <p className="text-gray-700 text-sm pl-8">Using GPS</p>
+              </div>
+            )}
+
+            {searchResult &&
+              searchInput &&
+              searchResult.map((result) => (
+                <div
+                  key={result.place_id}
+                  className="text-black border-b-2 pb-2 flex cursor-pointer gap-4"
+                  onClick={() => getLocation(result.place_id)}
+                >
+                  <i className="fa-solid fa-location-dot pt-4 text-gray-700"></i>
+                  <div>
+                    <h5 className="hover:text-myYellow transition-colors">
+                      {result.structured_formatting.main_text}
+                    </h5>
+                    <p className="text-sm opacity-60">
+                      {result.structured_formatting.secondary_text}
+                    </p>
+                  </div>
+                </div>
+              ))}
+          </div>
+        </div>
       </div>
     </div>
   );
 }
 
 function AppLogo({ toggleLocationBar }) {
+  const location = useSelector((store) => store.location);
+  const addressArr = location.addressStr.split(",");
+
   return (
     <div className="app-info flex items-center gap-4">
       <a href="/" className="">
@@ -33,11 +105,14 @@ function AppLogo({ toggleLocationBar }) {
         {/* will add location sidebar */}
       </a>
       <h1
-        className=" text-white cursor-pointer text-base"
+        className=" text-white cursor-pointer text-base hover:text-myYellow transition-colors group flex items-center"
         onClick={toggleLocationBar}
       >
-        Kolkata
-        <span className="pl-2 text-myGray text-sm opacity-80">India</span>
+        {addressArr[0]}
+        <span className="pl-2 text-myGray text-sm opacity-80 group-hover:opacity-100 transition-colors">
+          {addressArr[1]}, {addressArr[2]}, {addressArr[3]}
+        </span>
+        <i className="fa-solid fa-chevron-down text-myYellow pl-2 text-sm"></i>
       </h1>
     </div>
   );
@@ -101,6 +176,7 @@ function NavComponent() {
 
 const Header = () => {
   const [isLocationBarVisible, setIsLocationBarVisible] = useState(false);
+  const dispatch = useDispatch();
 
   function toggleLocationBar() {
     setIsLocationBarVisible((prev) => !prev);
@@ -111,6 +187,7 @@ const Header = () => {
       <LocationBar
         isLocationBarVisible={isLocationBarVisible}
         toggleLocationBar={toggleLocationBar}
+        dispatch={dispatch}
       />
       <AppLogo toggleLocationBar={toggleLocationBar} />
       <NavComponent />

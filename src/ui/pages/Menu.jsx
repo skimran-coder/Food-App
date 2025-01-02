@@ -15,7 +15,6 @@ const Menu = () => {
     data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards || [];
   const carousels = restaurantMenu[1]?.card?.card?.carousel;
 
-  console.log(carousels);
 
   const categoryTitle =
     restaurantMenu?.map((restaurant) => restaurant?.card?.card?.title) ?? [];

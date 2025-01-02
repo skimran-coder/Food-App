@@ -2,7 +2,6 @@ import { TOP_PICKS_CDN_URL } from "../../Constant";
 import Buttons from "./Buttons";
 
 const ResMenuCarousel = ({ carousel }) => {
-  console.log(carousel);
   const { bannerId, dish, creativeId } = carousel;
   return (
     <div key={bannerId} className="flex-shrink-0 w-72 relative">

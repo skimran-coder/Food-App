@@ -1,13 +1,12 @@
 import { useState, useEffect } from "react";
 
-const useRestaurant = () => {
+const useRestaurant = (location) => {
   const [restaurants, setRestaurants] = useState(
     null
   );
-  const lat = localStorage.getItem("lat") || "22.51800";
-  const lng = localStorage.getItem("lng") || "88.38320";
+  const lat = location.lat
+  const lng = location.lng
 
-  console.log(lat, lng);
 
   useEffect(() => {
     async function getRestaurant() {
@@ -19,7 +18,7 @@ const useRestaurant = () => {
         );
 
         const data = await response.json();
-        console.log(data);
+        console.log(data.data);
         setRestaurants(data?.data);
       } catch (error) {
         console.log(error);
@@ -29,7 +28,6 @@ const useRestaurant = () => {
     getRestaurant();
   }, [lat, lng]);
 
-  console.log(restaurants);
   return restaurants;
 };
 
