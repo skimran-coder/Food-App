@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+#root {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Familjen Grotesk", Helvetica;
+  width: 100vw;
+  height: 100vh;
+  overflow-x: hidden;
+}
+
+.resCards {
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  column-gap: 2rem;
+}
+
+.one-edge-shadow {
+  box-shadow: 0 90px 25px -6px black;
+}
