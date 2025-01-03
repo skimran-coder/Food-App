@@ -2,12 +2,23 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { addAddress, addCoords } from "../Redux/locationSlice";
 
-const usePosition = () => {
+const usePosition = ({ isLocateBtnClicked }) => {
   const dispatch = useDispatch();
+  console.log(isLocateBtnClicked);
+  console.log(
+    localStorage.getItem("lat") &&
+      localStorage.getItem("lng") &&
+      !isLocateBtnClicked
+  );
 
   useEffect(() => {
     function getLocation() {
-      if (localStorage.getItem("lat") && localStorage.getItem("lng")) {
+      if (
+        localStorage.getItem("lat") &&
+        localStorage.getItem("lng") &&
+        !isLocateBtnClicked
+      ) {
+        console.log("early return");
         return;
       }
 
@@ -32,7 +43,7 @@ const usePosition = () => {
       });
     }
     getLocation();
-  }, [dispatch]);
+  }, [dispatch, isLocateBtnClicked]);
 };
 
 export default usePosition;

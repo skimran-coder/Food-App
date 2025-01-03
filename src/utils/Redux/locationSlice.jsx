@@ -6,7 +6,7 @@ const locationSlice = createSlice({
   initialState: {
     lat: localStorage.getItem("lat") || "22.51800",
     lng: localStorage.getItem("lng") || "88.38320",
-    addressStr: localStorage.getItem("address") || "",
+    addressStr: localStorage.getItem("address") || "Kolkata, West Bengal",
   },
   reducers: {
     addCoords: (state, action) => {

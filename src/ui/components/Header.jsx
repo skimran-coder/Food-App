@@ -4,8 +4,14 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import usePlaceSuggestion from "../../utils/hooks/usePlaceSuggestion";
 import { addAddress, addCoords } from "../../utils/Redux/locationSlice";
+import usePosition from "../../utils/hooks/usePosition";
 
-function LocationBar({ isLocationBarVisible, toggleLocationBar, dispatch }) {
+function LocationBar({
+  isLocationBarVisible,
+  toggleLocationBar,
+  dispatch,
+  setIsLocateBtnClicked,
+}) {
   const [searchInput, setSearchInput] = useState();
 
   const searchResult = usePlaceSuggestion(searchInput);
@@ -52,7 +58,13 @@ function LocationBar({ isLocationBarVisible, toggleLocationBar, dispatch }) {
             ></input>
 
             {!searchInput && (
-              <div className="text-gray-700 flex flex-col border p-4 cursor-pointer">
+              <div
+                className="text-gray-700 flex flex-col border p-4 cursor-pointer"
+                onClick={() => {
+                  setIsLocateBtnClicked(true);
+                  toggleLocationBar();
+                }}
+              >
                 <div className="flex items-center gap-2">
                   <i className="fa-solid fa-location-crosshairs text-2xl opacity-70"></i>
                   <h4 className="font-bold hover:text-myYellow transition-colors">
@@ -110,7 +122,9 @@ function AppLogo({ toggleLocationBar }) {
       >
         {addressArr[0]}
         <span className="pl-2 text-myGray text-sm opacity-80 group-hover:opacity-100 transition-colors">
-          {addressArr[1]}, {addressArr[2]}, {addressArr[3]}
+          {addressArr[1]}
+          {addressArr[2] && ", " + addressArr[2]}
+          {addressArr[3] && ", " + addressArr[3]}
         </span>
         <i className="fa-solid fa-chevron-down text-myYellow pl-2 text-sm"></i>
       </h1>
@@ -176,7 +190,9 @@ function NavComponent() {
 
 const Header = () => {
   const [isLocationBarVisible, setIsLocationBarVisible] = useState(false);
+  const [isLocateBtnClicked, setIsLocateBtnClicked] = useState(false);
   const dispatch = useDispatch();
+  usePosition({ isLocateBtnClicked });
 
   function toggleLocationBar() {
     setIsLocationBarVisible((prev) => !prev);
@@ -188,6 +204,7 @@ const Header = () => {
         isLocationBarVisible={isLocationBarVisible}
         toggleLocationBar={toggleLocationBar}
         dispatch={dispatch}
+        setIsLocateBtnClicked={setIsLocateBtnClicked}
       />
       <AppLogo toggleLocationBar={toggleLocationBar} />
       <NavComponent />
